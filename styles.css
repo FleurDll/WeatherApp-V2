@@ -1,0 +1,395 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+form {
+  margin: 5px auto;
+}
+
+h1 {
+  color: #303030;
+  font-family: "Epilogue", sans-serif;
+  font-size: 35px;
+}
+
+h2 {
+  color: #686868;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+}
+
+/********************************************************** ADD / REMOVE CLASS ********************************/
+.bg-01d-02d {
+  background: center / cover no-repeat url(images/background/foret-soleil.jpg);
+}
+
+.bg-01n-02n {
+  background: center / cover no-repeat url(images/background/ciel-etoiles.jpg);
+}
+
+.bg-03d-03n-04d-04n {
+  background: center / cover no-repeat url(images/background/clouds.jpg);
+}
+
+.bg-09d-10d {
+  background: center / cover no-repeat url(images/background/rain-day.jpg);
+}
+
+.bg-09n-10n {
+  background: center / cover no-repeat url(images/background/leaf-rain.jpg);
+}
+
+.bg-11d-11n {
+  background: center / cover no-repeat url(images/background/thunder.jpg);
+}
+
+.bg-13d-13n {
+  background: center / cover no-repeat url(images/background/neige-soleil.jpg);
+}
+
+.bg-50d-50n {
+  background: center / cover no-repeat url(images/background/forest-v2.jpg);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+/******************************************************************************* LOADING **********************/
+
+.loading {
+  display: inline-block;
+  position: relative;
+  top: 10vh;
+  left: 35vw;
+  width: 80px;
+  height: 80px;
+}
+
+.loading div {
+  animation: loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+.loading div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffc107;
+  margin: -4px 0 0 -4px;
+}
+.loading div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.loading div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.loading div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.loading div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.loading div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.loading div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.loading div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.loading div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.loading div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.loading div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.loading div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.loading div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.loading div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.loading div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.loading div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.loading div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/******************************************************** CONTAINERS *****************************/
+.body-main {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 2.5px;
+  background-color: #4b5663;
+  background-image: url("https://www.transparenttextures.com/patterns/green-dust-and-scratches.png");
+}
+
+/* #5A7277;
+#485759;
+#162f4d;
+*/
+
+.window {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  width: 80vw;
+  -webkit-box-shadow: 0px 0px 51px -19px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 51px -19px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 51px -19px rgba(0, 0, 0, 0.75);
+}
+
+.container-left {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  padding: 0;
+}
+
+.container-right {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/************************************************************* INFO *********************************/
+.today-info {
+  display: inline-block;
+  width: auto;
+  padding: 25px;
+}
+
+.today-info h1,
+h2,
+p,
+img {
+  display: inline;
+  margin: 5px;
+}
+
+.flag {
+  width: 45px;
+  margin-left: 10px;
+}
+
+/***************************************************** SEARCH BOX ***************************************/
+.search-box {
+  display: flex;
+  margin-top: 5px;
+}
+
+.form-control {
+  display: inline;
+}
+
+/************************************************ TODAY'S METEO ************************************/
+.meteo-jour {
+  display: flex;
+  justify-content: left;
+  height: 30vh;
+  margin-left: 50px;
+  margin-bottom: 60px;
+}
+
+.temp {
+  align-self: center;
+  font-size: 100px;
+  font-weight: lighter;
+}
+
+.icon-meteo-today {
+  width: 170px;
+  margin-left: 150px;
+  animation: bouncing 2.2s 1s linear infinite;
+}
+
+@keyframes bouncing {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(2deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/******************************************* NEXT DAYS METEO *****************************/
+
+.meteo-futur {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-bottom: 10px;
+}
+
+.jour-futur {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  color: #303030;
+  font-family: "Epilogue", sans-serif;
+}
+
+.jour-futur p {
+  margin: 0;
+}
+
+.jour-futur img {
+  width: 45px;
+  margin: 25px;
+}
+
+.temp-futur {
+  font-size: 20px;
+  color: #686868;
+}
+
+/********************************************** ERROR PAGE ****************************************/
+
+.jumbotron {
+  background-color: #ece7ea;
+  padding: 50px;
+  display: flex;
+}
+
+.btn-error {
+  margin: 30px;
+}
+
+.sad-emoji {
+  width: 250px;
+  margin-right: 100px;
+}
+
+/******************************************************** RESPONSIVE ****************************/
+@media (max-width: 600px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    color: #686868;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+  }
+
+  .flag {
+    width: 30px;
+    margin-left: 5px;
+  }
+
+  .temp {
+    font-size: 70px;
+    margin: 0;
+  }
+
+  .icon-meteo-today {
+    height: 120px;
+    margin: 0;
+  }
+
+  .meteo-futur {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin-bottom: 0px;
+    font-size: 22px;
+  }
+
+  .jour-futur {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 978px) {
+  .loading {
+    top: 10vh;
+    left: 45vw;
+  }
+
+  .window {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100vh;
+    width: 100vw;
+    border-radius: 0;
+  }
+  
+  .container-left {
+    height: 70vh;
+  }
+
+  .container-right {
+    height: 15vh;
+    border-radius: 0;
+    position: absolute;
+    width: 100vw;
+    top: 0;
+  }
+
+  .today-info {
+    padding: 0 0 0 50px;
+    position: relative;
+    top: -90px
+  }
+
+  .search-box {
+    float: right;
+    margin: 10px 20px 0 0;
+  }
+
+  .meteo-jour {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 0 100px 100px;
+    height: auto;
+  }
+
+  .jour-futur img {
+    width: 70px;
+    margin: 10px;
+  }
+
+}
