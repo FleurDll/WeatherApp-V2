@@ -18,6 +18,12 @@ if (minutes < 10) {
 }
 const currentHour = hours + "h" + minutes;
 
+if (hours > 9 && hours < 19) {
+    $(".body-main").css("backgroundColor", "#4b5663");
+} else {
+    $(".body-main").css("backgroundColor", "#162f4d");
+}
+
 // Weekday
 const optionsDay = {
     weekday: "long"
@@ -74,7 +80,7 @@ const successLocationWeather = function (data) {
     }
 }
 
-//////////////////////////////////////////////////////// LOCATION NEXT DAYS WEATHER
+//////////////////////////////////////////////////////////////////////// LOCATION NEXT DAYS WEATHER
 const successLocationForcast = function (data) {
     const locationCity = (data.city.name).toUpperCase();
     const locationCountry = data.city.country;
@@ -86,7 +92,6 @@ const successLocationForcast = function (data) {
     for (i = 1; i <= 4; i++) {
         LocationTempsDays.push(Math.floor(data.list[i].main.temp));
         LocationIconDays.push("images/iconFutur/" + data.list[i].weather[0].icon + ".svg");
-        /* LocationIconDays.push("http://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png"); */
     }
 
     $(".loading").addClass("hidden");
@@ -188,7 +193,6 @@ const successSubmitForcast = function (data) {
     for (i = 1; i <= 4; i++) {
         tempsDays.push(Math.floor(data.list[i].main.temp));
         iconDays.push("images/iconFutur/" + data.list[i].weather[0].icon + ".svg");
-        /* iconDays.push("http://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png"); */
     }
 
     $(".loading").addClass("hidden");
