@@ -1,6 +1,6 @@
 # My Second Weather App
 
-## https://fleurdll.github.io/WeatherApp-V2/
+## https://fleurdll.github.io/Weather/
 > *(First one : https://my-weather-app-practice.herokuapp.com/)*
 Language : HTML, CSS and JS
 
