@@ -90,8 +90,8 @@ const successLocationForcast = function (data) {
     LocationIconForecast = [];
 
     for (i = 8; i <= 32; i += 8) {
-        LocationTempsForecast.push(Math.floor(data.list[i-1].main.temp));
-        LocationIconForecast.push("images/iconFutur/" + data.list[i-1].weather[0].icon + ".svg");
+        LocationTempsForecast.push(Math.floor(data.list[i - 1].main.temp));
+        LocationIconForecast.push("images/iconFutur/" + data.list[i - 1].weather[0].icon + ".svg");
     }
 
     $(".loading").addClass("hidden");
@@ -183,7 +183,7 @@ const successSubmitWeather = function (data) {
 }
 /////////////////////////////////////////////////////////////// SUBMIT NEXT DAYS WEATHER
 const successSubmitForcast = function (data) {
-    const searchedCity = data.city.name
+    const searchedCity = (data.city.name).toUpperCase();
     const searchedCountry = data.city.country;
     const srcFlagCountry = "http://purecatamphetamine.github.io/country-flag-icons/3x2/" + searchedCountry + ".svg";
 
@@ -191,8 +191,8 @@ const successSubmitForcast = function (data) {
     iconDays = [];
 
     for (i = 8; i <= 32; i += 8) {
-        tempsDays.push(Math.floor(data.list[i-1].main.temp));
-        iconDays.push("images/iconFutur/" + data.list[i-1].weather[0].icon + ".svg");
+        tempsDays.push(Math.floor(data.list[i - 1].main.temp));
+        iconDays.push("images/iconFutur/" + data.list[i - 1].weather[0].icon + ".svg");
     }
 
     console.log(tempsDays);

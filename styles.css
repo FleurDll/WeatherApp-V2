@@ -292,6 +292,13 @@ h3 {
 
 /********************************************************************************* RESPONSIVE */
 @media (max-width: 730px) {
+  html,
+  body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+
   .window {
     width: 100vw;
     height: 100%;
