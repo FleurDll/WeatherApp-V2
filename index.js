@@ -249,7 +249,7 @@ $("form").submit(e => {
 });
 
 
-// Full-Screen Smartphone
+////////////////////// Full-Screen Smartphone
 
 function getFullscreenElement() {
     return document.fullscreenElement
@@ -270,4 +270,12 @@ function toggleFullscreen() {
 
 document.addEventListener("dblclick", () => {
     toggleFullscreen();
+});
+
+$(".search-box").click(() => {
+    var offserTop = $("#cityInput").offset().top;
+    $(".cityInput").focus();
+    $("html, body").animate({
+        scrollTop: offserTop - 20
+    });
 });
