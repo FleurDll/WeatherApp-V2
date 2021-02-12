@@ -247,3 +247,27 @@ $("form").submit(e => {
         })
     e.preventDefault();
 });
+
+
+// Full-Screen Smartphone
+
+function getFullscreenElement() {
+    return document.fullscreenElement
+        || document.webkitFullscreenElement
+        || document.mozFullscreenElement
+        || document.msFullscreenElement
+}
+
+function toggleFullscreen() {
+    if (getFullscreenElement()) {
+        document.exitFullscreen();
+    } else {
+        document.documentElement.requestFullscreen().catch((e) => {
+            console.log(e);
+        });
+    }
+}
+
+document.addEventListener("dblclick", () => {
+    toggleFullscreen();
+});
