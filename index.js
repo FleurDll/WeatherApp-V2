@@ -272,6 +272,15 @@ document.addEventListener("dblclick", () => {
     toggleFullscreen();
 });
 
-$("#cityInput").click(() => {
-    $("#cityInput").addClass("absolute");
-});
+function handleBlur() {
+    console.log("blur function activated !");
+    $("#cityInput").css("position", "absolute");
+    $("#cityInput").css("bottom", (window.innerHeight) - (document.body.scrollTop) + "px");
+}
+
+function handleFocus() {
+    console.log("focus function activated !");
+    $("#cityInput").css("position", "relative");
+    $("#cityInput").css("bottom", "0px");
+}
+
