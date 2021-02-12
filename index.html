@@ -7,7 +7,7 @@
     <title>Météo</title>
     <link rel="icon" href="images/rainbow.ico" />
 
-    <!-- BOOTSTRAP -->
+    <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -18,7 +18,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css" />
 
-    <!-- GOOGLE FONT -->
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Epilogue:wght@200;300&display=swap"
@@ -36,70 +36,75 @@
     ></script>
   </head>
 
-  <body class="body-main">
+  <body class="body-index">
+    <div class="loading">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     <div class="window">
-      <div class="container-left">
-        <header>
-          <div class="today-info">
-            <div class="city-country">
-              <h1 class="location"></h1>
-              <h2 class="country"></h2>
-            </div>
-            <div class="flag-date">
-              <h2 class="date"></h2>
-              <img class="flag" src="" alt="" />
-            </div>
+      <!---------------------------------------------------------------------- First container -->
+      <section class="container-left">
+        <!---------------------------------------------------------------------- 1st box -->
+        <div class="today-info">
+          <div class="city-country">
+            <h1 class="location"></h1>
+            <h2 class="country"></h2>
           </div>
-        </header>
-
-        <div class="loading">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+          <div class="date-flag">
+            <h2 class="date"></h2>
+            <img class="flag-img" src="" alt="" />
+          </div>
         </div>
+        <!------------------------------------------------------------------ 2nd box -->
+        <div class="today-meteo">
+          <div class="today-meteo-column">
+            <h3 class="temp"></h3>
+          </div>
 
-        <footer>
-          <div class="meteo-jour">
-            <h1 class="temp"></h1>
-            <img class="icon-meteo-today hidden" src="" alt="image météo" />
+          <div class="today-meteo-column">
+            <img class="icon-today-meteo hidden" src="" alt="image météo" />
           </div>
-          <div class="meteo-futur hidden">
-            <div class="jour-futur">
-              <p class="d1"></p>
-              <img class="d1-img hidden" src="" alt="icon" />
-              <h3 class="d1-temp temp-futur"></h3>
-            </div>
-            <div class="jour-futur">
-              <p class="d2"></p>
-              <img class="d2-img hidden" src="" alt="icon" />
-              <h3 class="d2-temp temp-futur"></h3>
-            </div>
-            <div class="jour-futur">
-              <p class="d3"></p>
-              <img class="d3-img hidden" src="" alt="icon" />
-              <h3 class="d3-temp temp-futur"></h3>
-            </div>
-            <div class="jour-futur">
-              <p class="d4"></p>
-              <img class="d4-img hidden" src="" alt="icon" />
-              <h3 class="d4-temp temp-futur"></h3>
-            </div>
+        </div>
+        <!------------------------------------------------------------------ 3rd box -->
+
+        <div class="forecast-meteo hidden">
+          <div class="forecast-day">
+            <p class="d1"></p>
+            <img class="d1-img hidden" src="" alt="image météo" />
+            <h3 class="d1-temp temp-forecast"></h3>
           </div>
-        </footer>
-      </div>
-      <div class="container-right">
+          <div class="forecast-day">
+            <p class="d2"></p>
+            <img class="d2-img hidden" src="" alt="image météo" />
+            <h3 class="d2-temp temp-forecast"></h3>
+          </div>
+          <div class="forecast-day">
+            <p class="d3"></p>
+            <img class="d3-img hidden" src="" alt="image météo" />
+            <h3 class="d3-temp temp-forecast"></h3>
+          </div>
+          <div class="forecast-day">
+            <p class="d4"></p>
+            <img class="d4-img hidden" src="" alt="image météo" />
+            <h3 class="d4-temp temp-forecast"></h3>
+          </div>
+        </div>
+      </section>
+      <!---------------------------------------------------------------------- Second container -->
+      <section class="container-right">
         <div class="search-box">
           <form>
             <div class="input-group mb-3">
               <input
                 type="text"
                 class="form-control"
-                placeholder="Rechercher une ville"
+                placeholder="Chercher une ville"
                 autocomplete="off"
               />
               <button type="submit" class="btn btn-warning">
@@ -109,7 +114,7 @@
           </form>
         </div>
         <div class="img-nature"></div>
-      </div>
+      </section>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

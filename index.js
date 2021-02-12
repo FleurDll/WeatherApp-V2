@@ -19,9 +19,9 @@ if (minutes < 10) {
 const currentHour = hours + "h" + minutes;
 
 if (hours > 9 && hours < 19) {
-    $(".body-main").css("backgroundColor", "#4b5663");
+    $(".body-index").css("backgroundColor", "#4b5663");
 } else {
-    $(".body-main").css("backgroundColor", "#162f4d");
+    $(".body-index").css("backgroundColor", "#162f4d");
 }
 
 // Weekday
@@ -57,7 +57,7 @@ const successLocationWeather = function (data) {
     const todaySrcIcon = "images/iconSmile/" + todayIcon + ".svg";
     /* const todaySrcIcon = "images/iconToday/" + todayIcon + ".svg"; */
 
-    $(".icon-meteo-today").attr("src", todaySrcIcon);
+    $(".icon-today-meteo").attr("src", todaySrcIcon);
     $(".temp").text(todayTemp + "°");
 
     // Dynamic backbround
@@ -86,28 +86,28 @@ const successLocationForcast = function (data) {
     const locationCountry = data.city.country;
     const locationFlag = "http://purecatamphetamine.github.io/country-flag-icons/3x2/" + locationCountry + ".svg";
 
-    LocationTempsDays = [];
-    LocationIconDays = [];
+    LocationTempsForecast = [];
+    LocationIconForecast = [];
 
-    for (i = 1; i <= 4; i++) {
-        LocationTempsDays.push(Math.floor(data.list[i].main.temp));
-        LocationIconDays.push("images/iconFutur/" + data.list[i].weather[0].icon + ".svg");
+    for (i = 8; i <= 32; i += 8) {
+        LocationTempsForecast.push(Math.floor(data.list[i].main.temp));
+        LocationIconForecast.push("images/iconFutur/" + data.list[i].weather[0].icon + ".svg");
     }
 
     $(".loading").addClass("hidden");
     $("img").removeClass("hidden");
-    $(".meteo-futur").removeClass("hidden");
+    $(".forecast-meteo").removeClass("hidden");
 
     $(".location").text(locationCity + ", ");
     $(".country").text(locationCountry);
-    $(".flag").attr("src", locationFlag);
+    $(".flag-img").attr("src", locationFlag);
 
     for (i = 1; i <= 4; i++) {
-        $(".d" + i + "-temp").text(LocationTempsDays[i - 1] + "°");
+        $(".d" + i + "-temp").text(LocationTempsForecast[i - 1] + "°");
     }
 
     for (i = 1; i <= 4; i++) {
-        $(".d" + i + "-img").attr("src", LocationIconDays[i - 1]);
+        $(".d" + i + "-img").attr("src", LocationIconForecast[i - 1]);
     }
 }
 
@@ -125,7 +125,7 @@ function success(pos) {
     const longitude = crd.longitude;
     const apiKey = "0d19090abb5a0f99a36820be42fa1bcc";
 
-    const urlCurrentForcastLatLong = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&units=metric&cnt=6&lang=fr&appid=" + apiKey;
+    const urlCurrentForcastLatLong = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&units=metric&lang=fr&appid=" + apiKey;
     const urlCurrentWeatherLatLong = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&lang=fr&appid=" + apiKey + "&units=metric";
 
     $.get(urlCurrentForcastLatLong, successLocationForcast).done(function () {
@@ -159,7 +159,7 @@ const successSubmitWeather = function (data) {
     const todaySrcIcon = "images/iconSmile/" + todayIcon + ".svg";
     /* const todaySrcIcon = "images/iconToday/" + todayIcon + ".svg"; */
 
-    $(".icon-meteo-today").attr("src", todaySrcIcon);
+    $(".icon-today-meteo").attr("src", todaySrcIcon);
     $(".temp").text(todayTemp + "°");
 
     // Dynamic backbround
@@ -190,19 +190,19 @@ const successSubmitForcast = function (data) {
     tempsDays = [];
     iconDays = [];
 
-    for (i = 1; i <= 4; i++) {
+    for (i = 8; i <= 32; i += 8) {
         tempsDays.push(Math.floor(data.list[i].main.temp));
         iconDays.push("images/iconFutur/" + data.list[i].weather[0].icon + ".svg");
     }
 
     $(".loading").addClass("hidden");
     $("img").removeClass("hidden");
-    $(".meteo-futur").removeClass("hidden");
+    $(".forecast-meteo").removeClass("hidden");
 
     // Info
     $(".location").text(searchedCity + ", ");
     $(".country").text(searchedCountry);
-    $(".flag").attr("src", srcFlagCountry);
+    $(".flag-img").attr("src", srcFlagCountry);
 
     // Next days
     for (i = 1; i <= 4; i++) {
@@ -227,7 +227,7 @@ $("form").submit(e => {
 
     document.querySelector(".location").innerHTML = cityCapitalized;
 
-    const urlForecastCityName = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityCapitalized + "&lang=fr&appid=" + apiKey + "&units=metric&cnt=6";
+    const urlForecastCityName = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityCapitalized + "&lang=fr&appid=" + apiKey + "&units=metric";
     const urlCurrentWeatherCityName = "https://api.openweathermap.org/data/2.5/weather?q=" + cityCapitalized + "&lang=fr&appid=" + apiKey + "&units=metric";
 
     // Get futur info
@@ -241,7 +241,7 @@ $("form").submit(e => {
     $.get(urlCurrentWeatherCityName, successSubmitWeather).done(function () {
     })
         .fail(function () {
-            window.location.replace("https://fleurdll.github.io/Weather/error");
+            window.location.replace("https://fleurdll.github.io/WeatherApp-V2/error");
         })
     e.preventDefault();
 });

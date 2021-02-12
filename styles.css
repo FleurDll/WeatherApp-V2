@@ -1,26 +1,173 @@
-footer {
+/* font-family: "Epilogue", sans-serif;
+font-family: "Roboto", sans-serif; */
+
+:root {
+  --gris-fonce: #484848;
+  --gris-clair: #787878;
+}
+
+.body-index {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("https://www.transparenttextures.com/patterns/green-dust-and-scratches.png");
+}
+
+p {
+  margin: 0;
+}
+
+/* temperature number */
+h3 {
+  font-family: "Epilogue", sans-serif;
+}
+
+/*********************************************************************** All Containers */
+.window {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  width: 70vw;
+  height: 80%;
+  min-height: 650px;
+  -webkit-box-shadow: 0px 0px 51px -19px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 51px -19px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 51px -19px rgba(0, 0, 0, 0.75);
+  letter-spacing: 2.5px;
+  background-color: #fff;
+  border-radius: 7px;
+}
+
+.container-left {
+  display: grid;
+  grid-template-rows: 0.5fr 1fr 0.65fr;
+}
+
+.container-right {
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  min-width: 275px;
+}
+
+.today-info {
+  padding: 25px;
+}
+
+.today-meteo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 80px;
+}
+
+.forecast-meteo {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+/*********************************************************************** Search box */
+.search-box {
+  margin: 10px auto;
+  max-width: 300px;
+}
+
+/********************************************************************** BOX Today Info  */
+.location,
+.country,
+.date,
+.flag {
+  display: inline;
+}
+
+.location {
+  font-family: "Epilogue", sans-serif;
+  font-size: 38px;
+  color: var(--gris-fonce);
+}
+
+.country,
+.date {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  color: var(--gris-clair);
+  font-weight: lighter;
+}
+
+.flag-img {
+  width: 40px;
+  vertical-align: baseline;
+  border: solid;
+  border-width: 1px;
+  margin-left: 10px;
+}
+
+/****************************************************************** BOX Today Meteo */
+.today-meteo-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.temp {
+  color: var(--gris-fonce);
+  font-size: 115px;
+  font-weight: lighter;
+}
+
+.icon-today-meteo {
+  max-width: 200px;
+  animation: bouncing 2.2s 1s linear infinite;
+}
+
+@keyframes bouncing {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(2deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/**************************************************************************** BOX forecast Meteo */
+.forecast-day {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  color: var(--gris-clair);
 }
 
-form {
-  margin: 5px auto;
+.forecast-day img {
+  margin: 25px;
+  width: 50px;
 }
 
-h1 {
-  color: #303030;
-  font-family: "Epilogue", sans-serif;
-  font-size: 35px;
+.temp-forecast {
+  font-size: 20px;
 }
 
-h2 {
-  color: #686868;
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
+/**************************************************************************** ERROR */
+
+.jumbotron {
+  display: flex;
+  background-color: #e8e8e8;
+  padding: 50px 0 50px 50px;
 }
 
-/********************************************************** ADD / REMOVE CLASS ********************************/
+.sad-emoji {
+  width: 200px;
+  margin-right: 100px;
+}
+
+/********************************************************************************** Add / Remove Class **/
 .bg-01d-02d {
   background: center / cover no-repeat url(images/background/foret-soleil.jpg);
 }
@@ -57,13 +204,9 @@ h2 {
   visibility: hidden;
 }
 
-/******************************************************************************* LOADING **********************/
-
+/******************************************************************************* Loading */
 .loading {
-  display: inline-block;
-  position: relative;
-  top: 10vh;
-  left: 35vw;
+  position: absolute;
   width: 80px;
   height: 80px;
 }
@@ -147,242 +290,93 @@ h2 {
   }
 }
 
-/******************************************************** CONTAINERS *****************************/
-.body-main {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  letter-spacing: 2.5px;
-  background-image: url("https://www.transparenttextures.com/patterns/green-dust-and-scratches.png");
-}
-
-.window {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  background-color: #f2f2f2;
-  border-radius: 10px;
-  width: 80vw;
-  -webkit-box-shadow: 0px 0px 51px -19px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 51px -19px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 51px -19px rgba(0, 0, 0, 0.75);
-}
-
-.container-left {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  padding: 0;
-}
-
-.container-right {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-/************************************************************* INFO *********************************/
-.today-info {
-  display: inline-block;
-  width: auto;
-  padding: 25px;
-}
-
-.today-info h1,
-h2,
-p,
-img {
-  display: inline;
-  margin: 5px;
-}
-
-.flag {
-  width: 45px;
-  margin-left: 10px;
-}
-
-/***************************************************** SEARCH BOX ***************************************/
-.search-box {
-  display: flex;
-  margin-top: 5px;
-}
-
-.form-control {
-  display: inline;
-}
-
-/************************************************ TODAY'S METEO ************************************/
-.meteo-jour {
-  display: flex;
-  justify-content: left;
-  height: 30vh;
-  margin-left: 50px;
-  margin-bottom: 60px;
-}
-
-.temp {
-  align-self: center;
-  font-size: 100px;
-  font-weight: lighter;
-}
-
-.icon-meteo-today {
-  width: 170px;
-  margin-left: 150px;
-  animation: bouncing 2.2s 1s linear infinite;
-}
-
-@keyframes bouncing {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(2deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  75% {
-    transform: rotate(-2deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-/********************************************************************** NEXT DAYS METEO *****************************/
-
-.meteo-futur {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin-bottom: 10px;
-}
-
-.jour-futur {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-  color: #303030;
-  font-family: "Epilogue", sans-serif;
-}
-
-.jour-futur p {
-  margin: 0;
-}
-
-.jour-futur img {
-  width: 45px;
-  margin: 25px;
-}
-
-.temp-futur {
-  font-size: 20px;
-  color: #686868;
-}
-
-/****************************************************************** ERROR PAGE ****************************************/
-
-.jumbotron {
-  background-color: #ece7ea;
-  padding: 50px;
-  display: flex;
-}
-
-.btn-error {
-  margin: 30px;
-}
-
-.sad-emoji {
-  width: 250px;
-  margin-right: 100px;
-}
-
-/************************************************************************* RESPONSIVE ****************************/
-@media (max-width: 600px) {
-  h1 {
-    font-size: 20px;
-  }
-
-  h2 {
-    color: #686868;
-    font-family: "Roboto", sans-serif;
-    font-size: 15px;
-  }
-
-  .flag {
-    width: 30px;
-    margin-left: 5px;
-  }
-
-  .temp {
-    font-size: 70px;
-    margin: 0;
-  }
-
-  .icon-meteo-today {
-    height: 120px;
-    margin: 0;
-  }
-
-  .meteo-futur {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    margin-bottom: 0px;
-    font-size: 22px;
-  }
-
-  .jour-futur {
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width: 978px) {
-  .loading {
-    top: 10vh;
-    left: 45vw;
-  }
-
+/********************************************************************************* RESPONSIVE */
+@media (max-width: 730px) {
   .window {
-    display: flex;
-    flex-direction: column-reverse;
-    height: 100vh;
     width: 100vw;
+    height: 100%;
     border-radius: 0;
   }
 
   .container-left {
-    height: 70vh;
-  }
-
-  .container-right {
-    height: 15vh;
-    border-radius: 0;
-    position: absolute;
-    width: 100vw;
-    top: 0;
+    grid-template-rows: 0.4fr 0.4fr 0.4fr;
   }
 
   .today-info {
-    padding: 0 0 0 50px;
-    position: relative;
-    top: -90px;
+    padding: 25px 0 0 25px;
+  }
+
+  .location {
+    font-size: 25px;
+  }
+
+  .country,
+  .date {
+    font-size: 16px;
+  }
+
+  .flag-img {
+    width: 30px;
+  }
+
+  .today-meteo {
+    margin: 40px 25px;
+  }
+
+  .icon-today-meteo {
+    width: 115px;
+  }
+
+  .forecast-meteo {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .forecast-meteo p {
+    font-size: 15px;
+  }
+
+  .forecast-day img {
+    margin: 15px;
+    width: 45px;
+  }
+
+  .temp-forecast {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1028px) {
+  .window {
+    display: flex;
+    flex-wrap: wrap-reverse;
+  }
+
+  .container-right {
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+    border-bottom-right-radius: 0;
+    width: inherit;
+  }
+
+  .container-left {
+    width: inherit;
   }
 
   .search-box {
-    float: right;
-    margin: 10px 20px 0 0;
+    margin: 15px;
   }
 
-  .meteo-jour {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 0 0 100px 100px;
-    height: auto;
+  .temp {
+    font-size: 90px;
   }
 
-  .jour-futur img {
-    width: 70px;
-    margin: 10px;
+  .icon-today-meteo {
+    max-width: 175px;
+  }
+
+  .sad-emoji {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
   }
 }
