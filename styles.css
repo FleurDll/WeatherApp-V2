@@ -292,30 +292,6 @@ h3 {
 
 /********************************************************************************* RESPONSIVE */
 @media (max-width: 730px) {
-  html,
-  body {
-    height: 100%;
-  }
-
-  body {
-    position: fixed;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    background: 0 0;
-    -webkit-overflow-scrolling: touch;
-    overflow-x: auto;
-    overflow-y: scroll;
-  }
-
-  /* .background {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    overflow: hidden;
-  } */
 
   .window {
     width: 100vw;
@@ -330,6 +306,8 @@ h3 {
 
   .container-right {
     border-radius: 0px !important;
+    position: fixed !important;
+    top: 0px !important;
   }
 
   .today-info {
