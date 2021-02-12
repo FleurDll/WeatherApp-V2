@@ -243,7 +243,7 @@ $("form").submit(e => {
     $.get(urlCurrentWeatherCityName, successSubmitWeather).done(function () {
     })
         .fail(function () {
-            window.location.replace("https://fleurdll.github.io/WeatherApp-V2/error");
+            window.location.replace("https://fleurdll.github.io/Weather/error");
         })
     e.preventDefault();
 });
