@@ -271,11 +271,3 @@ function toggleFullscreen() {
 document.addEventListener("dblclick", () => {
     toggleFullscreen();
 });
-
-$(".search-box").click(() => {
-    var offserTop = $("#cityInput").offset().top;
-    $(".cityInput").focus();
-    $("html, body").animate({
-        scrollTop: offserTop - 20
-    });
-});

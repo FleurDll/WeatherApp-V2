@@ -302,12 +302,14 @@ h3 {
   .container-left {
     grid-template-rows: 0.4fr 0.4fr 0.4fr;
     border-radius: 0px;
+    position: fixed;
+    bottom: 0;
   }
 
   .container-right {
     border-radius: 0px !important;
-    position: fixed !important;
-    top: 0px !important;
+    position: fixed;
+    top: 0;
   }
 
   .today-info {
