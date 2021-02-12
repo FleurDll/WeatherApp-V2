@@ -292,19 +292,30 @@ h3 {
 
 /********************************************************************************* RESPONSIVE */
 @media (max-width: 730px) {
-  html {
-    overflow: hidden;
-    width: 100%;
-  }
-  
+  html,
   body {
     height: 100%;
-    position: fixed;
-    /* prevent overscroll bounce*/
-    background-color: lightgreen;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
   }
+
+  body {
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: 0 0;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overflow-y: scroll;
+  }
+
+  /* .background {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+  } */
 
   .window {
     width: 100vw;
