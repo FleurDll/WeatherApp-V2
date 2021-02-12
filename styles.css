@@ -204,6 +204,10 @@ h3 {
   visibility: hidden;
 }
 
+.absolute {
+  position: absolute;
+}
+
 /******************************************************************************* Loading */
 .loading {
   position: absolute;
@@ -302,14 +306,14 @@ h3 {
   .container-left {
     grid-template-rows: 0.4fr 0.4fr 0.4fr;
     border-radius: 0px;
-    position: fixed;
-    bottom: 0;
   }
 
   .container-right {
     border-radius: 0px !important;
+  }
+
+  .cityInput {
     position: fixed;
-    top: 0;
   }
 
   .today-info {

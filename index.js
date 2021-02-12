@@ -271,3 +271,7 @@ function toggleFullscreen() {
 document.addEventListener("dblclick", () => {
     toggleFullscreen();
 });
+
+$("#cityInput").click(() => {
+    $("#cityInput").addClass("absolute");
+});
