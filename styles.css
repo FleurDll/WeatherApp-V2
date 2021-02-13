@@ -218,10 +218,10 @@ h3 {
   visibility: hidden;
 }
 
-.keyboard {
+/* .keyboard { cela ne change pas malgré le fait de passer de 500px à 700px...
   height: calc(100% + 700px);
 }
-
+ */
 /******************************************************************************* Loading */
 .loading {
   position: absolute;
@@ -355,8 +355,8 @@ h3 {
     width: 100vw;
     height: 100vh;
     border-radius: 0px;
-    /* background-color: aqua; */
-    background-color: chocolate;
+    background-color: aqua;
+    /* background-color: chocolate; */
   }
 
   .container-left {
