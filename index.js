@@ -233,7 +233,7 @@ $("form").submit(e => {
         $("#inputCity").val("");
     }, 10);
 
-    document.querySelector(".location").innerHTML = cityCapitalized;
+    $(".location").text(cityCapitalized);
 
     const urlForecastCityName = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityCapitalized + "&lang=fr&appid=" + apiKey + "&units=metric";
     const urlCurrentWeatherCityName = "https://api.openweathermap.org/data/2.5/weather?q=" + cityCapitalized + "&lang=fr&appid=" + apiKey + "&units=metric";
@@ -255,7 +255,7 @@ $("form").submit(e => {
 });
 ////////////////////// Full-Screen Smartphone
 
-/* function getFullscreenElement() {
+function getFullscreenElement() {
     return document.fullscreenElement
         || document.webkitFullscreenElement
         || document.mozFullscreenElement
@@ -274,7 +274,7 @@ function toggleFullscreen() {
 
 document.addEventListener("dblclick", () => {
     toggleFullscreen();
-}); */
+});
 
 /////// Trying to prevent this *** keyboard from destroying my work in smartphone mode
 
@@ -284,6 +284,7 @@ function darkMode() {
     $(".window").css("background-color", "#121212");
     $(".body-index").css("backgroundColor", "#121212");
     $(".container-right").addClass("dark-overlay");
+    $(".window").css("box-shadow", "0px 0px 51px -19px rgba(250, 250, 250, 0.25)");
 
     $(".location, .temp").css("color", "#A8A8A8");
     $(".country, .date, .forecast-day").css("color", "#606060");
@@ -306,6 +307,7 @@ function whiteMode() {
     $(".window").css("background-color", "#ffffff");
     $(".body-index").css("backgroundColor", "#ffffff");
     $(".container-right").removeClass("dark-overlay");
+    $(".window").css("box-shadow", "0px 0px 51px -19px rgba(0, 0, 0, 0.75)");
 
     $(".location, .temp").css("color", "#505050");
     $(".country, .date, .forecast-day").css("color", "#a2b0c1");
@@ -332,4 +334,3 @@ $(".toggle-state").click(() => {
         whiteMode();
     }
 });
-///// END DARK MODE
