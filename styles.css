@@ -218,9 +218,9 @@ h3 {
   visibility: hidden;
 }
 
-/* .keyboard {
+.keyboard {
   height: calc(100% + 500px);
-} */
+}
 
 /******************************************************************************* Loading */
 .loading {
@@ -349,11 +349,14 @@ h3 {
   }
 }
 
+/***************************************** Smartphone */
 @media (max-width: 730px) {
   .window {
     width: 100vw;
     height: 100vh;
     border-radius: 0px;
+    background-color: aqua;
+    /* background-color: chocolate; */
   }
 
   .container-left {

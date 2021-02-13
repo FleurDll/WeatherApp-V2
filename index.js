@@ -273,7 +273,7 @@ document.addEventListener("dblclick", () => {
 });
 
 /////// Trying to prevent this *** keyboard from destroying my work in smartphone mode
-/* document.body.addEventListener("focus", event => {
+document.body.addEventListener("focus", event => {
     const target = event.target;
     switch (target.tagName) {
         case "INPUT":
@@ -284,9 +284,9 @@ document.addEventListener("dblclick", () => {
 }, true); 
 document.body.addEventListener("blur", () => {
     document.body.classList.remove("keyboard");
-}, true);  */
+}, true); 
 
-var $htmlOrBody = $('html, body'), // scrollTop works on <body> for some browsers, <html> for others
+/* var $htmlOrBody = $('html, body'), // scrollTop works on <body> for some browsers, <html> for others
     scrollTopPadding = 8;
 
 $('input').focus(() => {
@@ -296,7 +296,7 @@ $('input').focus(() => {
     $htmlOrBody.scrollTop(textareaTop - scrollTopPadding);
 });
 
-
+ */
 /* $(window).resize(function() {
     var $htmlOrBody = $('html, body'), // scrollTop works on <body> for some browsers, <html> for others
     scrollTopPadding = 8;
