@@ -327,14 +327,14 @@ h3 {
   .today-meteo {
     margin: 40px 25px;
     position: relative !important;
-    top: 180px;
+    top: 250px;
   }
 
   .forecast-meteo {
     grid-template-columns: 1fr 1fr;
     margin: 0;
     position: relative !important;
-    top: 150px;
+    top: 230px;
   }
 
   .location {
