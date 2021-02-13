@@ -289,7 +289,7 @@ document.body.addEventListener("blur", () => {
 var $htmlOrBody = $('html, body'), // scrollTop works on <body> for some browsers, <html> for others
     scrollTopPadding = 8;
 
-$('textarea').focus(() => {
+$('input').focus(() => {
     // get textarea's offset top position
     var textareaTop = $(this).offset().top;
     // scroll to the textarea
@@ -305,6 +305,6 @@ $('textarea').focus(() => {
     // scroll to the textarea
     $htmlOrBody.scrollTop(textareaTop - scrollTopPadding);
 
-    // OR  To add animation for smooth scrolling, use this. 
+    // OR  To add animation for smooth scrolling, use this.
     //$htmlOrBody.animate({ scrollTop: textareaTop - scrollTopPadding }, 200);
 }); */
