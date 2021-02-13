@@ -159,11 +159,25 @@ h3 {
 .jumbotron {
   display: flex;
   background-color: #e8e8e8;
-  padding: 50px 0 50px 50px;
+  padding: 150px 0 150px 50px;
+  letter-spacing: 1px;
+}
+
+.titre-error {
+  font-family: "Epilogue", sans-serif;
+}
+
+.text-error {
+  font-size: 23px;
+}
+
+.btn-error {
+  margin: 20px;
 }
 
 .sad-emoji {
   width: 200px;
+  height: 200px;
   margin-right: 100px;
 }
 
@@ -202,6 +216,10 @@ h3 {
 
 .hidden {
   visibility: hidden;
+}
+
+body .keyboard {
+  height: calc(100% + 500px);
 }
 
 /******************************************************************************* Loading */
@@ -309,6 +327,7 @@ h3 {
 
   .search-box {
     margin: 15px;
+    font-size: 16px !important;
   }
 
   .temp {
@@ -324,8 +343,8 @@ h3 {
   }
 
   .sad-emoji {
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     margin-right: 20px;
   }
 }
@@ -333,7 +352,7 @@ h3 {
 @media (max-width: 730px) {
   .window {
     width: 100vw;
-    min-height: 100vh;
+    height: 100vh;
     border-radius: 0px;
   }
 
