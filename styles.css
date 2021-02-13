@@ -2,12 +2,8 @@
 font-family: "Roboto", sans-serif; */
 
 :root {
-  --gris-fonce: #484848;
-  --gris-clair: #787878;
-}
-
-html {
-  overflow: scroll;
+  --gris-fonce: #505050;
+  --gris-clair: #a2b0c1;
 }
 
 .body-index {
@@ -119,7 +115,7 @@ h3 {
 
 .icon-today-meteo {
   max-width: 200px;
-  animation: bouncing 2.2s 1s linear infinite;
+  animation: bouncing 2.5s 1s linear infinite;
 }
 
 @keyframes bouncing {
@@ -127,13 +123,13 @@ h3 {
     transform: rotate(0deg);
   }
   25% {
-    transform: rotate(2deg);
+    transform: rotate(3deg);
   }
   50% {
     transform: rotate(0deg);
   }
   75% {
-    transform: rotate(-2deg);
+    transform: rotate(-3deg);
   }
   100% {
     transform: rotate(0deg);
@@ -295,11 +291,49 @@ h3 {
 }
 
 /********************************************************************************* RESPONSIVE */
-@media (max-width: 730px) {
+@media (max-width: 1070px) {
+  .window {
+    display: flex;
+    flex-wrap: wrap-reverse;
+  }
 
+  .container-right {
+    border-top-left-radius: 7px;
+    border-bottom-right-radius: 0;
+    width: inherit;
+  }
+
+  .container-left {
+    width: inherit;
+  }
+
+  .search-box {
+    margin: 15px;
+  }
+
+  .temp {
+    font-size: 90px;
+  }
+
+  .icon-today-meteo {
+    max-width: 175px;
+  }
+
+  .forecast-meteo {
+    margin-bottom: 20px;
+  }
+
+  .sad-emoji {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 730px) {
   .window {
     width: 100vw;
-    height: 100%;
+    min-height: 100vh;
     border-radius: 0px;
   }
 
@@ -310,12 +344,6 @@ h3 {
 
   .container-right {
     border-radius: 0px !important;
-  }
-
-  .cityInput {
-    position: relative;
-    width: 100%;
-    bottom: 0px;
   }
 
   .today-info {
@@ -345,6 +373,7 @@ h3 {
 
   .forecast-meteo {
     grid-template-columns: 1fr 1fr;
+    margin: 0;
   }
 
   .forecast-meteo p {
@@ -359,39 +388,8 @@ h3 {
   .temp-forecast {
     font-size: 20px;
   }
-}
 
-@media (max-width: 1100px) {
-  .window {
-    display: flex;
-    flex-wrap: wrap-reverse;
-  }
-
-  .container-right {
-    border-top-left-radius: 7px;
-    border-bottom-right-radius: 0;
-    width: inherit;
-  }
-
-  .container-left {
-    width: inherit;
-  }
-
-  .search-box {
-    margin: 15px;
-  }
-
-  .temp {
-    font-size: 90px;
-  }
-
-  .icon-today-meteo {
-    max-width: 175px;
-  }
-
-  .sad-emoji {
-    width: 100px;
-    height: 100px;
-    margin-right: 20px;
+  .forecast-top {
+    margin-bottom: 45px;
   }
 }

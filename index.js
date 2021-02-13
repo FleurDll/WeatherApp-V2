@@ -84,7 +84,7 @@ const successLocationWeather = function (data) {
 const successLocationForcast = function (data) {
     const locationCity = (data.city.name).toUpperCase();
     const locationCountry = data.city.country;
-    const locationFlag = "http://purecatamphetamine.github.io/country-flag-icons/3x2/" + locationCountry + ".svg";
+    const locationFlag = "https://purecatamphetamine.github.io/country-flag-icons/3x2/" + locationCountry + ".svg";
 
     LocationTempsForecast = [];
     LocationIconForecast = [];
@@ -185,7 +185,7 @@ const successSubmitWeather = function (data) {
 const successSubmitForcast = function (data) {
     const searchedCity = (data.city.name).toUpperCase();
     const searchedCountry = data.city.country;
-    const srcFlagCountry = "http://purecatamphetamine.github.io/country-flag-icons/3x2/" + searchedCountry + ".svg";
+    const srcFlagCountry = "https://purecatamphetamine.github.io/country-flag-icons/3x2/" + searchedCountry + ".svg";
 
     tempsDays = [];
     iconDays = [];
@@ -271,16 +271,3 @@ function toggleFullscreen() {
 document.addEventListener("dblclick", () => {
     toggleFullscreen();
 });
-
-function handleBlur() {
-    console.log("blur function activated !");
-    $("#cityInput").css("position", "absolute");
-    $("#cityInput").css("bottom", (window.innerHeight) - (document.body.scrollTop) + "px");
-}
-
-function handleFocus() {
-    console.log("focus function activated !");
-    $("#cityInput").css("position", "relative");
-    $("#cityInput").css("bottom", "0px");
-}
-

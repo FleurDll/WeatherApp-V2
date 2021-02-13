@@ -74,12 +74,12 @@
         <!------------------------------------------------------------------ 3rd box -->
 
         <div class="forecast-meteo hidden">
-          <div class="forecast-day">
+          <div class="forecast-day forecast-top">
             <p class="d1"></p>
             <img class="d1-img hidden" src="" alt="image météo" />
             <h3 class="d1-temp temp-forecast"></h3>
           </div>
-          <div class="forecast-day">
+          <div class="forecast-day forecast-top">
             <p class="d2"></p>
             <img class="d2-img hidden" src="" alt="image météo" />
             <h3 class="d2-temp temp-forecast"></h3>
@@ -102,9 +102,6 @@
           <form>
             <div class="input-group mb-3">
               <input
-                onblur="handleBlur()"
-                onfocus="handleFocus()"
-                id="cityInput"
                 type="text"
                 class="form-control"
                 placeholder="Chercher une ville"
