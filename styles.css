@@ -114,7 +114,23 @@ h3 {
   animation: bouncing 2.5s 1s linear infinite;
 }
 
-@keyframes bouncing{0%{transform:rotate(0)}25%{transform:rotate(3deg)}50%{transform:rotate(0)}75%{transform:rotate(-3deg)}100%{transform:rotate(0)}}
+@keyframes bouncing {
+  0% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(0);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
 
 /**************************************************************************** BOX forecast Meteo */
 .forecast-day {
@@ -162,7 +178,34 @@ h3 {
 }
 
 /********************************************************************************** Add / Remove Class **/
-.bg-01d-02d{background:center/cover no-repeat url(images/background/foret-soleil.jpg)}.bg-01n-02n{background:center/cover no-repeat url(images/background/ciel-etoiles.jpg)}.bg-03d-03n-04d-04n{background:center/cover no-repeat url(images/background/clouds.jpg)}.bg-09d-10d{background:center/cover no-repeat url(images/background/rain-day.jpg)}.bg-09n-10n{background:center/cover no-repeat url(images/background/leaf-rain.jpg)}.bg-11d-11n{background:center/cover no-repeat url(images/background/thunder.jpg)}.bg-13d-13n{background:center/cover no-repeat url(images/background/neige-soleil.jpg)}.bg-50d-50n{background:center/cover no-repeat url(images/background/forest-v2.jpg)}
+.bg-01d-02d {
+  background: center/cover no-repeat url(images/background/foret-soleil.jpg);
+}
+.bg-01n-02n {
+  background: center/cover no-repeat url(images/background/night-time.jpg);
+}
+.bg-03d-03n-04d-04n {
+  background: center/cover no-repeat url(images/background/clouds.jpg);
+}
+.bg-09d-10d {
+  background: center/cover no-repeat url(images/background/rain-day.jpg);
+}
+.bg-09n-10n {
+  background: center/cover no-repeat url(images/background/leaf-rain.jpg);
+}
+.bg-11d-11n {
+  background: center/cover no-repeat url(images/background/thunder.jpg);
+}
+.bg-13d-13n {
+  background: center/cover no-repeat url(images/background/neige-soleil.jpg);
+}
+.bg-50d-50n {
+  background: center/cover no-repeat url(images/background/forest-v2.jpg);
+}
+
+.bg-image-smartphone {
+  background: center/cover no-repeat url(images/background/forest.jpg);
+}
 
 .hidden {
   visibility: hidden;
@@ -175,8 +218,76 @@ h3 {
   height: 5rem;
 }
 
-.loading div{animation:loading 1.2s cubic-bezier(.5,0,.5,1) infinite;transform-origin:1.5rem 1.5rem}.loading div:after{content:" ";display:block;position:absolute;width:.4rem;height:.4rem;border-radius:50%;background:#ffc107;margin:-4px 0 0 -4px}
-.loading div:nth-child(1){animation-delay:-36ms}.loading div:nth-child(1):after{top:63px;left:63px}.loading div:nth-child(2){animation-delay:-72ms}.loading div:nth-child(2):after{top:68px;left:56px}.loading div:nth-child(3){animation-delay:-108ms}.loading div:nth-child(3):after{top:71px;left:48px}.loading div:nth-child(4){animation-delay:-144ms}.loading div:nth-child(4):after{top:72px;left:40px}.loading div:nth-child(5){animation-delay:-.18s}.loading div:nth-child(5):after{top:71px;left:32px}.loading div:nth-child(6){animation-delay:-216ms}.loading div:nth-child(6):after{top:68px;left:24px}.loading div:nth-child(7){animation-delay:-252ms}.loading div:nth-child(7):after{top:63px;left:17px}.loading div:nth-child(8){animation-delay:-288ms}.loading div:nth-child(8):after{top:56px;left:12px}
+.loading div {
+  animation: loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 1.5rem 1.5rem;
+}
+.loading div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: #ffc107;
+  margin: -4px 0 0 -4px;
+}
+.loading div:nth-child(1) {
+  animation-delay: -36ms;
+}
+.loading div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.loading div:nth-child(2) {
+  animation-delay: -72ms;
+}
+.loading div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.loading div:nth-child(3) {
+  animation-delay: -108ms;
+}
+.loading div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.loading div:nth-child(4) {
+  animation-delay: -144ms;
+}
+.loading div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.loading div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.loading div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.loading div:nth-child(6) {
+  animation-delay: -216ms;
+}
+.loading div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.loading div:nth-child(7) {
+  animation-delay: -252ms;
+}
+.loading div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.loading div:nth-child(8) {
+  animation-delay: -288ms;
+}
+.loading div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
 
 @keyframes loading {
   0% {
@@ -247,6 +358,11 @@ h3 {
   transform: translate3d(25%, 0, 0);
 }
 
+/* Modal */
+.modal-footer {
+  border: none;
+}
+
 /********************************************************************************* RESPONSIVE */
 @media (max-width: 1070px) {
   .window {
@@ -289,14 +405,19 @@ h3 {
 }
 
 /***************************************** Smartphone */
-@media (max-width: 390px){
-  .search-box { 
+@media (max-width: 390px) {
+  .search-box {
     width: 200px !important;
     margin: 10px;
   }
 }
 
 @media (max-width: 730px) {
+  .loading {
+    top: 50vh;
+    z-index: 50;
+  }
+
   .body-index {
     display: absolute;
     min-height: 800px;
@@ -328,8 +449,6 @@ h3 {
     top: 0;
     z-index: 50;
   }
-
-  
 
   .today-info {
     padding: 25px 0 0 25px;

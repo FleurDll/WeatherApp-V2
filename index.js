@@ -101,19 +101,21 @@ function success(pos) {
     $.get(urlCurrentForecastLatLong, successLocationForecast).done(function () {
     })
         .fail(function () {
-            alert("erreur");
+            $('#myModal').modal('show');
         })
 
     // Get TODAY info
     $.get(urlCurrentWeatherLatLong, successLocationWeather).done(function () {
     })
         .fail(function () {
-            window.location.replace("file:///C:/Users/32456/Desktop/FrontEnd/Weather/error.html");
+            $('#myModal').modal('show');
         })
 }
 
 function error(err) {
     console.warn("ERREUR" + err.code + " " + err.message);
+    $(".modal-body").text("Seul la recherche par ville est disponible. (" + err.message + ").");
+    $('#myModal').modal('show');
 }
 
 if (navigator.geolocation) {
@@ -193,7 +195,7 @@ $("form").submit(e => {
     $.get(urlForecastCityName, successSubmitForecast).done(function () {
     })
         .fail(function () {
-            window.location.replace("file:///C:/Users/32456/Desktop/FrontEnd/WeatherApp/error.html");
+            window.location.replace("https://fleurdll.github.io/Weather/error");
         })
 
     // Get current info
@@ -253,22 +255,29 @@ function whiteMode() {
 
 // Dynamic backbround
 function getDynamicImage(todayIcon) {
-    if (todayIcon === "01d" || todayIcon === "02d") {
-        $(".container-right").removeClass().addClass("bg-01d-02d container-right");
-    } else if (todayIcon === "01n" || todayIcon === "02n") {
-        $(".container-right").removeClass().addClass("bg-01n-02n container-right");
-    } else if (todayIcon === "03d" || todayIcon === "03n" || todayIcon === "04d" || todayIcon === "04n") {
-        $(".container-right").removeClass().addClass("bg-03d-03n-04d-04n container-right");
-    } else if (todayIcon === "09d" || todayIcon === "10d") {
-        $(".container-right").removeClass().addClass("bg-09d-10d container-right");
-    } else if (todayIcon === "09n" || todayIcon === "10n") {
-        $(".container-right").removeClass().addClass("bg-09n-10n container-right");
-    } else if (todayIcon === "11d" || todayIcon === "11n") {
-        $(".container-right").removeClass().addClass("bg-11d-11n container-right");
-    } else if (todayIcon === "13d" || todayIcon === "13n") {
-        $(".container-right").removeClass().addClass("bg-13d-13n container-right");
-    } else if (todayIcon === "50d" || todayIcon === "50n") {
-        $(".container-right").removeClass().addClass("bg-50d-50n container-right");
+
+    const windowSize = $(window).width();
+
+    if (windowSize > 730) {
+        if (todayIcon === "01d" || todayIcon === "02d") {
+            $(".container-right").removeClass().addClass("bg-01d-02d container-right");
+        } else if (todayIcon === "01n" || todayIcon === "02n") {
+            $(".container-right").removeClass().addClass("bg-01n-02n container-right");
+        } else if (todayIcon === "03d" || todayIcon === "03n" || todayIcon === "04d" || todayIcon === "04n") {
+            $(".container-right").removeClass().addClass("bg-03d-03n-04d-04n container-right");
+        } else if (todayIcon === "09d" || todayIcon === "10d") {
+            $(".container-right").removeClass().addClass("bg-09d-10d container-right");
+        } else if (todayIcon === "09n" || todayIcon === "10n") {
+            $(".container-right").removeClass().addClass("bg-09n-10n container-right");
+        } else if (todayIcon === "11d" || todayIcon === "11n") {
+            $(".container-right").removeClass().addClass("bg-11d-11n container-right");
+        } else if (todayIcon === "13d" || todayIcon === "13n") {
+            $(".container-right").removeClass().addClass("bg-13d-13n container-right");
+        } else if (todayIcon === "50d" || todayIcon === "50n") {
+            $(".container-right").removeClass().addClass("bg-50d-50n container-right");
+        }
+    } else {
+        $(".container-right").addClass("bg-image-smartphone");
     }
 }
 
@@ -294,8 +303,7 @@ document.addEventListener("dblclick", () => {
     toggleFullscreen();
 });
 
-
-$(document).ready(function() {
+$(document).ready(function () {
     var windowHeight = $(window).innerHeight();
-    $('body').css({'height':windowHeight});
+    $('body').css({ 'height': windowHeight });
 });
