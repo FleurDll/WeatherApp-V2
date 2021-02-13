@@ -286,18 +286,18 @@ document.body.addEventListener("blur", () => {
     document.body.classList.remove("keyboard");
 }, true);  */
 
-var $htmlOrBody = $('html, body'), // scrollTop works on <body> for some browsers, <html> for others
-    scrollTopPadding = 8;
+/* var $htmlOrBody = $('html, body'), // scrollTop works on <body> for some browsers, <html> for others
+    scrollTopPadding = 8;       NE MARCHE PAS DU TOUT
 
 $('input').focus(() => {
     // get textarea's offset top position
     var textareaTop = $(this).offset().top;
     // scroll to the textarea
     $htmlOrBody.scrollTop(textareaTop - scrollTopPadding);
-});
+}); */
 
 
-/* $(window).resize(function() {
+$(window).resize(function() {
     var $htmlOrBody = $('html, body'), // scrollTop works on <body> for some browsers, <html> for others
     scrollTopPadding = 8;
     // get input tag's offset top position
@@ -307,4 +307,4 @@ $('input').focus(() => {
 
     // OR  To add animation for smooth scrolling, use this.
     //$htmlOrBody.animate({ scrollTop: textareaTop - scrollTopPadding }, 200);
-}); */
+});
