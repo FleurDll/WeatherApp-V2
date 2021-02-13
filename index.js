@@ -18,12 +18,6 @@ if (minutes < 10) {
 }
 const currentHour = hours + "h" + minutes;
 
-if (hours > 9 && hours < 19) {
-    $(".body-index").css("backgroundColor", "#4b5663");
-} else {
-    $(".body-index").css("backgroundColor", "#162f4d");
-}
-
 // Weekday
 const optionsDay = {
     weekday: "long"
@@ -88,9 +82,11 @@ const successLocationForcast = function (data) {
 
     LocationTempsForecast = [];
     LocationIconForecast = [];
+    iconCode = [];
 
     for (i = 8; i <= 32; i += 8) {
         LocationTempsForecast.push(Math.floor(data.list[i - 1].main.temp));
+        iconCode.push(data.list[i - 1].weather[0].icon);
         LocationIconForecast.push("images/iconFutur/" + data.list[i - 1].weather[0].icon + ".svg");
     }
 
@@ -109,6 +105,7 @@ const successLocationForcast = function (data) {
     for (i = 1; i <= 4; i++) {
         $(".d" + i + "-img").attr("src", LocationIconForecast[i - 1]);
     }
+    return iconCode;
 }
 
 const optionsLocation = {
@@ -187,15 +184,23 @@ const successSubmitForcast = function (data) {
     const searchedCountry = data.city.country;
     const srcFlagCountry = "https://purecatamphetamine.github.io/country-flag-icons/3x2/" + searchedCountry + ".svg";
 
+    var backgroundColorWhileSubmit = $(".window").css("background-color");
+    console.log(backgroundColorWhileSubmit);
+
     tempsDays = [];
     iconDays = [];
+    iconCode = [];
 
     for (i = 8; i <= 32; i += 8) {
         tempsDays.push(Math.floor(data.list[i - 1].main.temp));
-        iconDays.push("images/iconFutur/" + data.list[i - 1].weather[0].icon + ".svg");
-    }
+        iconCode.push(data.list[i - 1].weather[0].icon);
 
-    console.log(tempsDays);
+        if (backgroundColorWhileSubmit === "rgb(18, 18, 18)") {
+            iconDays.push("images/darkmodeIcon/" + data.list[i - 1].weather[0].icon + ".svg");
+        } else {
+            iconDays.push("images/iconFutur/" + data.list[i - 1].weather[0].icon + ".svg");
+        }
+    }
 
     $(".loading").addClass("hidden");
     $("img").removeClass("hidden");
@@ -214,17 +219,18 @@ const successSubmitForcast = function (data) {
     for (i = 1; i <= 4; i++) {
         $(".d" + i + "-img").attr("src", iconDays[i - 1]);
     }
+
+    return iconCode;
 }
 /////////////////////////////////////////////////////////////////////////////////////////////// API CALL SUBMIT
 
 $("form").submit(e => {
     const apiKey = "0d19090abb5a0f99a36820be42fa1bcc";
-    const inputVal = document.querySelector("input").value;
-
+    const inputVal = $("#inputCity").val();
     const cityCapitalized = inputVal.charAt(0).toUpperCase() + inputVal.slice(1);
 
     setTimeout(() => { //clear input value
-        document.querySelector("input").value = "";
+        $("#inputCity").val("");
     }, 10);
 
     document.querySelector(".location").innerHTML = cityCapitalized;
@@ -247,11 +253,9 @@ $("form").submit(e => {
         })
     e.preventDefault();
 });
-
-
 ////////////////////// Full-Screen Smartphone
 
-function getFullscreenElement() {
+/* function getFullscreenElement() {
     return document.fullscreenElement
         || document.webkitFullscreenElement
         || document.mozFullscreenElement
@@ -270,41 +274,62 @@ function toggleFullscreen() {
 
 document.addEventListener("dblclick", () => {
     toggleFullscreen();
-});
-
-/////// Trying to prevent this *** keyboard from destroying my work in smartphone mode
-/* document.body.addEventListener("focus", event => {                PETIT BOUT DU INPUT VISIBLE. PAS MOYEN DE FAIRE PLUS
-    const target = event.target;
-    switch (target.tagName) {
-        case "INPUT":
-        case "TEXTAREA":
-        case "SELECT":
-            document.body.classList.add("keyboard");
-    }
-}, true);
-document.body.addEventListener("blur", () => {
-    document.body.classList.remove("keyboard");
-}, true);  */
-
-/* var $htmlOrBody = $('html, body'), // scrollTop works on <body> for some browsers, <html> for others
-    scrollTopPadding = 8;       NE MARCHE PAS DU TOUT
-
-$('input').focus(() => {
-    // get textarea's offset top position
-    var textareaTop = $(this).offset().top;
-    // scroll to the textarea
-    $htmlOrBody.scrollTop(textareaTop - scrollTopPadding);
 }); */
 
+/////// Trying to prevent this *** keyboard from destroying my work in smartphone mode
 
-$(window).resize(function() {
-    var $htmlOrBody = $('html, body'), // scrollTop works on <body> for some browsers, <html> for others
-    scrollTopPadding = 8;
-    // get input tag's offset top position
-    var textareaTop = $(this).offset().top;
-    // scroll to the textarea
-    $htmlOrBody.scrollTop(textareaTop - scrollTopPadding);
 
-    // OR  To add animation for smooth scrolling, use this.
-    //$htmlOrBody.animate({ scrollTop: textareaTop - scrollTopPadding }, 200);
+////////////////////////  Dark Mode
+function darkMode() {
+    $(".window").css("background-color", "#121212");
+    $(".body-index").css("backgroundColor", "#121212");
+    $(".container-right").addClass("dark-overlay");
+
+    $(".location, .temp").css("color", "#A8A8A8");
+    $(".country, .date, .forecast-day").css("color", "#606060");
+
+    // Change icon forcast
+    iconDarkMode = [];
+    for (i = 0; i <= 4; i++) {
+        iconDarkMode.push("images/darkmodeIcon/" + iconCode[i] + ".svg");
+    }
+
+    for (i = 1; i <= 4; i++) {
+        $(".d" + i + "-img").attr("src", iconDarkMode[i - 1]);
+    }
+
+    var mode = "black";
+    return mode;
+}
+
+function whiteMode() {
+    $(".window").css("background-color", "#ffffff");
+    $(".body-index").css("backgroundColor", "#ffffff");
+    $(".container-right").removeClass("dark-overlay");
+
+    $(".location, .temp").css("color", "#505050");
+    $(".country, .date, .forecast-day").css("color", "#a2b0c1");
+
+
+    // Change icon forcast
+    iconWhiteMode = [];
+    for (i = 0; i <= 4; i++) {
+        iconWhiteMode.push("images/iconFutur/" + iconCode[i] + ".svg");
+    }
+
+    for (i = 1; i <= 4; i++) {
+        $(".d" + i + "-img").attr("src", iconWhiteMode[i - 1]);
+    }
+    var mode = "white";
+    return mode;
+}
+
+$(".toggle-state").click(() => {
+    var backgroundColor = $(".window").css("background-color");
+    if (backgroundColor === "rgb(255, 255, 255)") {
+        darkMode();
+    } else {
+        whiteMode();
+    }
 });
+///// END DARK MODE
