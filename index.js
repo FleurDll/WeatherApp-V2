@@ -124,16 +124,11 @@ if (navigator.geolocation) {
 
 //////////////////////////////////////////////////////////////// Submit current weather
 const successSubmitCurrent = function (data) {
-    const searchedCity = (data.city.name).toUpperCase();
-    const searchedCountry = data.city.country;
-    const srcFlagCountry = "https://purecatamphetamine.github.io/country-flag-icons/3x2/" + searchedCountry + ".svg";
+
     const currentTemp = Math.floor(data.main.temp);
     const currentIcon = data.weather[0].icon;
     const currentSrcIcon = "images/iconSmile/" + currentIcon + ".svg";
 
-    $(".location").text(searchedCity + ", ");
-    $(".country").text(searchedCountry);
-    $(".flag-img").attr("src", srcFlagCountry);
     $(".icon-today-meteo").attr("src", currentSrcIcon);
     $(".temp").text(currentTemp + "°");
 
@@ -141,6 +136,9 @@ const successSubmitCurrent = function (data) {
 }
 /////////////////////////////////////////////////////////////// Submit forcast weather
 const successSubmitForecast = function (data) {
+    const searchedCity = (data.city.name).toUpperCase();
+    const searchedCountry = data.city.country;
+    const srcFlagCountry = "https://purecatamphetamine.github.io/country-flag-icons/3x2/" + searchedCountry + ".svg";
     const backgroundColorWhileSubmit = $(".window").css("background-color");
 
     tempsDays = [];
@@ -161,6 +159,9 @@ const successSubmitForecast = function (data) {
     $(".loading").addClass("hidden");
     $("img").removeClass("hidden");
     $(".forecast-meteo").removeClass("hidden");
+    $(".location").text(searchedCity + ", ");
+    $(".country").text(searchedCountry);
+    $(".flag-img").attr("src", srcFlagCountry);
 
     for (i = 1; i <= 4; i++) {
         $(".d" + i + "-temp").text(tempsDays[i - 1] + "°");
