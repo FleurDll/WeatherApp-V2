@@ -294,11 +294,11 @@ h3 {
     width: 100vw;
     height: 100vh;
     border-radius: 0px;
-    background-color: aqua;
+    background-color: chocolate;
   }
 
   .container-left {
-    grid-template-rows: 0.2fr 0.25fr 0.4fr;
+    /* grid-template-rows: 0.2fr 0.25fr 0.4fr; */
     border-radius: 0px;
   }
 
@@ -311,7 +311,7 @@ h3 {
   .label {
     position: absolute;
     right: 0;
-    top: 110px;
+    top: 60px;
     display: inline-flex;
     align-items: center;
     cursor: pointer;
@@ -320,7 +320,22 @@ h3 {
 
   .today-info {
     padding: 25px 0 0 25px;
-    margin-top: 70px;
+    margin-top: 90px;
+    position: absolute !important;
+    top: 0;
+  }
+
+  .today-meteo {
+    margin: 40px 25px;
+    position: relative !important;
+    top: 180px;
+  }
+
+  .forecast-meteo {
+    grid-template-columns: 1fr 1fr;
+    margin: 0;
+    position: relative !important;
+    top: 150px;
   }
 
   .location {
@@ -336,17 +351,8 @@ h3 {
     width: 30px;
   }
 
-  .today-meteo {
-    margin: 40px 25px;
-  }
-
   .icon-today-meteo {
     width: 115px;
-  }
-
-  .forecast-meteo {
-    grid-template-columns: 1fr 1fr;
-    margin: 0;
   }
 
   .forecast-meteo p {
@@ -360,9 +366,5 @@ h3 {
 
   .temp-forecast {
     font-size: 20px;
-  }
-
-  .forecast-top {
-    margin-bottom: 45px;
   }
 }
