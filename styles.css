@@ -294,21 +294,24 @@ h3 {
     width: 100vw;
     height: 100vh;
     border-radius: 0px;
+    background-color: aqua;
   }
 
   .container-left {
-    grid-template-rows: 0.4fr 0.4fr 0.4fr;
+    grid-template-rows: 0.2fr 0.25fr 0.4fr;
     border-radius: 0px;
   }
 
   .container-right {
     border-radius: 0px !important;
+    position: absolute !important;
+    top: 0; 
   }
 
   .label {
     position: absolute;
     right: 0;
-    top: 200px;
+    top: 110px;
     display: inline-flex;
     align-items: center;
     cursor: pointer;
@@ -317,6 +320,7 @@ h3 {
 
   .today-info {
     padding: 25px 0 0 25px;
+    margin-top: 70px;
   }
 
   .location {
