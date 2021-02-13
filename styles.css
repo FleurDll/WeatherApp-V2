@@ -218,9 +218,9 @@ h3 {
   visibility: hidden;
 }
 
-body .keyboard {
+/* .keyboard {
   height: calc(100% + 500px);
-}
+} */
 
 /******************************************************************************* Loading */
 .loading {

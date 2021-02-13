@@ -273,7 +273,7 @@ document.addEventListener("dblclick", () => {
 });
 
 /////// Trying to prevent this *** keyboard from destroying my work in smartphone mode
-document.body.addEventListener("focus", event => {
+/* document.body.addEventListener("focus", event => {
     const target = event.target;
     switch (target.tagName) {
         case "INPUT":
@@ -284,4 +284,27 @@ document.body.addEventListener("focus", event => {
 }, true); 
 document.body.addEventListener("blur", () => {
     document.body.classList.remove("keyboard");
-}, true); 
+}, true);  */
+
+var $htmlOrBody = $('html, body'), // scrollTop works on <body> for some browsers, <html> for others
+    scrollTopPadding = 8;
+
+$('textarea').focus(() => {
+    // get textarea's offset top position
+    var textareaTop = $(this).offset().top;
+    // scroll to the textarea
+    $htmlOrBody.scrollTop(textareaTop - scrollTopPadding);
+});
+
+
+/* $(window).resize(function() {
+    var $htmlOrBody = $('html, body'), // scrollTop works on <body> for some browsers, <html> for others
+    scrollTopPadding = 8;
+    // get input tag's offset top position
+    var textareaTop = $(this).offset().top;
+    // scroll to the textarea
+    $htmlOrBody.scrollTop(textareaTop - scrollTopPadding);
+
+    // OR  To add animation for smooth scrolling, use this. 
+    //$htmlOrBody.animate({ scrollTop: textareaTop - scrollTopPadding }, 200);
+}); */
