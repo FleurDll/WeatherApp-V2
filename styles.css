@@ -290,16 +290,20 @@ h3 {
 
 /***************************************** Smartphone */
 @media (max-width: 730px) {
-  .window {
-    width: 100vw;
-    height: 100vh;
-    border-radius: 0px;
-    background-color: cornflowerblue;
+  .body-index {
+    display: absolute;
+    min-height: 800px;
+    align-items: flex-start;
   }
 
-  #root {
-    min-height : 800px;
-    }
+  .window {
+    width: 100vw;
+    min-height: 100vh;
+    border-radius: 0px;
+    background-color: gray;
+    position: relative;
+    top: 0;
+  }
 
   .container-left {
     grid-template-rows: 0.4fr 0.4fr 0.4fr;
@@ -308,20 +312,24 @@ h3 {
 
   .container-right {
     border-radius: 0px !important;
+    position: fixed;
+    top: 0;
   }
 
   .label {
-    position: absolute;
+    position: fixed;
     right: 0;
-    top: 200px;
-    display: inline-flex;
+    top: 0;
+    display: block;
     align-items: center;
     cursor: pointer;
     color: black;
+    z-index: 50;
   }
 
   .today-info {
     padding: 25px 0 0 25px;
+    margin-top: 80px;
   }
 
   .location {
