@@ -1,4 +1,4 @@
-// Today date
+// Today's date
 const optionsDate = {
     weekday: "long",
     day: "numeric",
@@ -8,15 +8,6 @@ const dateComplete = new Date().toLocaleDateString("fr-FR", optionsDate);
 const dateCompleteCapitalized = dateComplete.toUpperCase();
 
 $(".date").text(dateCompleteCapitalized);
-/* document.querySelector(".time").innerHTML = currentHour; */
-
-// Hours
-const hours = new Date().getHours();
-let minutes = new Date().getMinutes();
-if (minutes < 10) {
-    minutes = "0" + minutes;
-}
-const currentHour = hours + "h" + minutes;
 
 // Weekday
 const optionsDay = {
@@ -44,48 +35,31 @@ for (i = 1; i <= 4; i++) {
     $(".d" + i).text(weekday[indexFutur[i - 1]]);
 };
 
-///////////////////////////////////////////////////////////////////////////// LOCATION TODAY WEATHER
+//////////////////////////////////////////////////////////////// Location current weather
 const successLocationWeather = function (data) {
-    const todayTemp = Math.floor(data.main.temp);
-    const todayIcon = data.weather[0].icon;
-    const todaySrcIcon = "images/iconSmile/" + todayIcon + ".svg";
-    /* const todaySrcIcon = "images/iconToday/" + todayIcon + ".svg"; */
+    const currentTemp = Math.floor(data.main.temp);
+    const currentIcon = data.weather[0].icon;
+    const currentSrcIcon = "images/iconSmile/" + currentIcon + ".svg";
 
-    $(".icon-today-meteo").attr("src", todaySrcIcon);
-    $(".temp").text(todayTemp + "°");
+    $(".icon-today-meteo").attr("src", currentSrcIcon);
+    $(".temp").text(currentTemp + "°");
 
-    // Dynamic backbround
-    if (todayIcon === "01d" || todayIcon === "02d") {
-        $(".container-right").removeClass().addClass("bg-01d-02d container-right");
-    } else if (todayIcon === "01n" || todayIcon === "02n") {
-        $(".container-right").removeClass().addClass("bg-01n-02n container-right");
-    } else if (todayIcon === "03d" || todayIcon === "03n" || todayIcon === "04d" || todayIcon === "04n") {
-        $(".container-right").removeClass().addClass("bg-03d-03n-04d-04n container-right");
-    } else if (todayIcon === "09d" || todayIcon === "10d") {
-        $(".container-right").removeClass().addClass("bg-09d-10d container-right");
-    } else if (todayIcon === "09n" || todayIcon === "10n") {
-        $(".container-right").removeClass().addClass("bg-09n-10n container-right");
-    } else if (todayIcon === "11d" || todayIcon === "11n") {
-        $(".container-right").removeClass().addClass("bg-11d-11n container-right");
-    } else if (todayIcon === "13d" || todayIcon === "13n") {
-        $(".container-right").removeClass().addClass("bg-13d-13n container-right");
-    } else if (todayIcon === "50d" || todayIcon === "50n") {
-        $(".container-right").removeClass().addClass("bg-50d-50n container-right");
-    }
+
+    getDynamicImage(currentIcon);
 }
 
-//////////////////////////////////////////////////////////////////////// LOCATION NEXT DAYS WEATHER
-const successLocationForcast = function (data) {
+/////////////////////////////////////////////////////////////// Location forecast weather
+const successLocationForecast = function (data) {
     const locationCity = (data.city.name).toUpperCase();
     const locationCountry = data.city.country;
     const locationFlag = "https://purecatamphetamine.github.io/country-flag-icons/3x2/" + locationCountry + ".svg";
 
-    LocationTempsForecast = [];
+    LocationTempForecast = [];
     LocationIconForecast = [];
-    iconCode = [];
+    iconCode = [];  // for dark/white mode
 
     for (i = 8; i <= 32; i += 8) {
-        LocationTempsForecast.push(Math.floor(data.list[i - 1].main.temp));
+        LocationTempForecast.push(Math.floor(data.list[i - 1].main.temp));
         iconCode.push(data.list[i - 1].weather[0].icon);
         LocationIconForecast.push("images/iconFutur/" + data.list[i - 1].weather[0].icon + ".svg");
     }
@@ -93,13 +67,12 @@ const successLocationForcast = function (data) {
     $(".loading").addClass("hidden");
     $("img").removeClass("hidden");
     $(".forecast-meteo").removeClass("hidden");
-
     $(".location").text(locationCity + ", ");
     $(".country").text(locationCountry);
     $(".flag-img").attr("src", locationFlag);
 
     for (i = 1; i <= 4; i++) {
-        $(".d" + i + "-temp").text(LocationTempsForecast[i - 1] + "°");
+        $(".d" + i + "-temp").text(LocationTempForecast[i - 1] + "°");
     }
 
     for (i = 1; i <= 4; i++) {
@@ -108,13 +81,13 @@ const successLocationForcast = function (data) {
     return iconCode;
 }
 
+///////////////////////////////////////////////////////////////////////////// API CALL LOCATION
 const optionsLocation = {
     enableHightAccuracy: true,
     timeout: 5000,
     maximumAge: 0
 };
 
-///////////////////////////////////////////////////////////////////////////// API CALL LOCATION
 function success(pos) {
     $(".loading").removeClass("hidden");
     const crd = pos.coords;
@@ -122,10 +95,10 @@ function success(pos) {
     const longitude = crd.longitude;
     const apiKey = "0d19090abb5a0f99a36820be42fa1bcc";
 
-    const urlCurrentForcastLatLong = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&units=metric&lang=fr&appid=" + apiKey;
+    const urlCurrentForecastLatLong = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&units=metric&lang=fr&appid=" + apiKey;
     const urlCurrentWeatherLatLong = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&lang=fr&appid=" + apiKey + "&units=metric";
 
-    $.get(urlCurrentForcastLatLong, successLocationForcast).done(function () {
+    $.get(urlCurrentForecastLatLong, successLocationForecast).done(function () {
     })
         .fail(function () {
             alert("erreur");
@@ -135,12 +108,12 @@ function success(pos) {
     $.get(urlCurrentWeatherLatLong, successLocationWeather).done(function () {
     })
         .fail(function () {
-            window.location.replace("file:///C:/Users/32456/Desktop/FrontEnd/WeatherApp/error.html");
+            window.location.replace("file:///C:/Users/32456/Desktop/FrontEnd/Weather/error.html");
         })
 }
 
 function error(err) {
-    console.warn("ERREUR (${err.code}): (${err.message})");
+    console.warn("ERREUR" + err.code + " " + err.message);
 }
 
 if (navigator.geolocation) {
@@ -149,47 +122,30 @@ if (navigator.geolocation) {
     alert("La géolocalisation n'est pas supportée par ce browser.");
 }
 
-//////////////////////////////////////////////////////////////// SUBMIT TODAY WEATHER
-const successSubmitWeather = function (data) {
-    const todayTemp = Math.floor(data.main.temp);
-    const todayIcon = data.weather[0].icon;
-    const todaySrcIcon = "images/iconSmile/" + todayIcon + ".svg";
-    /* const todaySrcIcon = "images/iconToday/" + todayIcon + ".svg"; */
-
-    $(".icon-today-meteo").attr("src", todaySrcIcon);
-    $(".temp").text(todayTemp + "°");
-
-    // Dynamic backbround
-    if (todayIcon === "01d" || todayIcon === "02d") {
-        $(".container-right").removeClass().addClass("bg-01d-02d container-right");
-    } else if (todayIcon === "01n" || todayIcon === "02n") {
-        $(".container-right").removeClass().addClass("bg-01n-02n container-right");
-    } else if (todayIcon === "03d" || todayIcon === "03n" || todayIcon === "04d" || todayIcon === "04n") {
-        $(".container-right").removeClass().addClass("bg-03d-03n-04d-04n container-right");
-    } else if (todayIcon === "09d" || todayIcon === "10d") {
-        $(".container-right").removeClass().addClass("bg-09d-10d container-right");
-    } else if (todayIcon === "09n" || todayIcon === "10n") {
-        $(".container-right").removeClass().addClass("bg-09n-10n container-right");
-    } else if (todayIcon === "11d" || todayIcon === "11n") {
-        $(".container-right").removeClass().addClass("bg-11d-11n container-right");
-    } else if (todayIcon === "13d" || todayIcon === "13n") {
-        $(".container-right").removeClass().addClass("bg-13d-13n container-right");
-    } else if (todayIcon === "50d" || todayIcon === "50n") {
-        $(".container-right").removeClass().addClass("bg-50d-50n container-right");
-    }
-}
-/////////////////////////////////////////////////////////////// SUBMIT NEXT DAYS WEATHER
-const successSubmitForcast = function (data) {
+//////////////////////////////////////////////////////////////// Submit current weather
+const successSubmitCurrent = function (data) {
     const searchedCity = (data.city.name).toUpperCase();
     const searchedCountry = data.city.country;
     const srcFlagCountry = "https://purecatamphetamine.github.io/country-flag-icons/3x2/" + searchedCountry + ".svg";
+    const currentTemp = Math.floor(data.main.temp);
+    const currentIcon = data.weather[0].icon;
+    const currentSrcIcon = "images/iconSmile/" + currentIcon + ".svg";
 
-    var backgroundColorWhileSubmit = $(".window").css("background-color");
-    console.log(backgroundColorWhileSubmit);
+    $(".location").text(searchedCity + ", ");
+    $(".country").text(searchedCountry);
+    $(".flag-img").attr("src", srcFlagCountry);
+    $(".icon-today-meteo").attr("src", currentSrcIcon);
+    $(".temp").text(currentTemp + "°");
+
+    getDynamicImage(currentIcon);
+}
+/////////////////////////////////////////////////////////////// Submit forcast weather
+const successSubmitForecast = function (data) {
+    const backgroundColorWhileSubmit = $(".window").css("background-color");
 
     tempsDays = [];
     iconDays = [];
-    iconCode = [];
+    iconCode = [];  // for dark/white mode
 
     for (i = 8; i <= 32; i += 8) {
         tempsDays.push(Math.floor(data.list[i - 1].main.temp));
@@ -206,12 +162,6 @@ const successSubmitForcast = function (data) {
     $("img").removeClass("hidden");
     $(".forecast-meteo").removeClass("hidden");
 
-    // Info
-    $(".location").text(searchedCity + ", ");
-    $(".country").text(searchedCountry);
-    $(".flag-img").attr("src", srcFlagCountry);
-
-    // Next days
     for (i = 1; i <= 4; i++) {
         $(".d" + i + "-temp").text(tempsDays[i - 1] + "°");
     }
@@ -222,7 +172,7 @@ const successSubmitForcast = function (data) {
 
     return iconCode;
 }
-/////////////////////////////////////////////////////////////////////////////////////////////// API CALL SUBMIT
+////////////////////////////////////////////////////////////////////////////////////// API CALL SUBMIT
 
 $("form").submit(e => {
     const apiKey = "0d19090abb5a0f99a36820be42fa1bcc";
@@ -238,23 +188,90 @@ $("form").submit(e => {
     const urlForecastCityName = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityCapitalized + "&lang=fr&appid=" + apiKey + "&units=metric";
     const urlCurrentWeatherCityName = "https://api.openweathermap.org/data/2.5/weather?q=" + cityCapitalized + "&lang=fr&appid=" + apiKey + "&units=metric";
 
-    // Get futur info
-    $.get(urlForecastCityName, successSubmitForcast).done(function () {
+    // Get forecast info
+    $.get(urlForecastCityName, successSubmitForecast).done(function () {
     })
         .fail(function () {
             window.location.replace("file:///C:/Users/32456/Desktop/FrontEnd/WeatherApp/error.html");
         })
 
-    // Get TODAY info
-    $.get(urlCurrentWeatherCityName, successSubmitWeather).done(function () {
+    // Get current info
+    $.get(urlCurrentWeatherCityName, successSubmitCurrent).done(function () {
     })
         .fail(function () {
             window.location.replace("https://fleurdll.github.io/Weather/error");
         })
     e.preventDefault();
 });
-////////////////////// Full-Screen Smartphone
 
+// switch button Darkmode / Whitemode
+$(".toggle-state").click(() => {
+    var backgroundColor = $(".window").css("background-color");
+    if (backgroundColor === "rgb(255, 255, 255)") {
+        darkMode();
+    } else {
+        whiteMode();
+    }
+});
+
+function darkMode() {
+    $(".window").css("background-color", "#121212");
+    $(".body-index").css("backgroundColor", "#121212");
+    $(".container-right").addClass("dark-overlay");
+    $(".window").css("box-shadow", "0px 0px 51px -19px rgba(250, 250, 250, 0.25)");
+    $(".location, .temp").css("color", "#A8A8A8");
+    $(".country, .date, .forecast-day").css("color", "#606060");
+
+    // Change icon forcast
+    iconDarkMode = [];
+    for (i = 0; i <= 4; i++) {
+        iconDarkMode.push("images/darkmodeIcon/" + iconCode[i] + ".svg");
+    }
+    for (i = 1; i <= 4; i++) {
+        $(".d" + i + "-img").attr("src", iconDarkMode[i - 1]);
+    }
+}
+
+function whiteMode() {
+    $(".window").css("background-color", "#ffffff");
+    $(".body-index").css("backgroundColor", "#ffffff");
+    $(".container-right").removeClass("dark-overlay");
+    $(".window").css("box-shadow", "0px 0px 51px -19px rgba(0, 0, 0, 0.75)");
+    $(".location, .temp").css("color", "#505050");
+    $(".country, .date, .forecast-day").css("color", "#a2b0c1");
+
+    // Change icon forcast
+    iconWhiteMode = [];
+    for (i = 0; i <= 4; i++) {
+        iconWhiteMode.push("images/iconFutur/" + iconCode[i] + ".svg");
+    }
+    for (i = 1; i <= 4; i++) {
+        $(".d" + i + "-img").attr("src", iconWhiteMode[i - 1]);
+    }
+}
+
+// Dynamic backbround
+function getDynamicImage(todayIcon) {
+    if (todayIcon === "01d" || todayIcon === "02d") {
+        $(".container-right").removeClass().addClass("bg-01d-02d container-right");
+    } else if (todayIcon === "01n" || todayIcon === "02n") {
+        $(".container-right").removeClass().addClass("bg-01n-02n container-right");
+    } else if (todayIcon === "03d" || todayIcon === "03n" || todayIcon === "04d" || todayIcon === "04n") {
+        $(".container-right").removeClass().addClass("bg-03d-03n-04d-04n container-right");
+    } else if (todayIcon === "09d" || todayIcon === "10d") {
+        $(".container-right").removeClass().addClass("bg-09d-10d container-right");
+    } else if (todayIcon === "09n" || todayIcon === "10n") {
+        $(".container-right").removeClass().addClass("bg-09n-10n container-right");
+    } else if (todayIcon === "11d" || todayIcon === "11n") {
+        $(".container-right").removeClass().addClass("bg-11d-11n container-right");
+    } else if (todayIcon === "13d" || todayIcon === "13n") {
+        $(".container-right").removeClass().addClass("bg-13d-13n container-right");
+    } else if (todayIcon === "50d" || todayIcon === "50n") {
+        $(".container-right").removeClass().addClass("bg-50d-50n container-right");
+    }
+}
+
+////////////////////// Full-Screen mode
 function getFullscreenElement() {
     return document.fullscreenElement
         || document.webkitFullscreenElement
@@ -274,63 +291,4 @@ function toggleFullscreen() {
 
 document.addEventListener("dblclick", () => {
     toggleFullscreen();
-});
-
-/////// Trying to prevent this *** keyboard from destroying my work in smartphone mode
-
-
-////////////////////////  Dark Mode
-function darkMode() {
-    $(".window").css("background-color", "#121212");
-    $(".body-index").css("backgroundColor", "#121212");
-    $(".container-right").addClass("dark-overlay");
-    $(".window").css("box-shadow", "0px 0px 51px -19px rgba(250, 250, 250, 0.25)");
-
-    $(".location, .temp").css("color", "#A8A8A8");
-    $(".country, .date, .forecast-day").css("color", "#606060");
-
-    // Change icon forcast
-    iconDarkMode = [];
-    for (i = 0; i <= 4; i++) {
-        iconDarkMode.push("images/darkmodeIcon/" + iconCode[i] + ".svg");
-    }
-
-    for (i = 1; i <= 4; i++) {
-        $(".d" + i + "-img").attr("src", iconDarkMode[i - 1]);
-    }
-
-    var mode = "black";
-    return mode;
-}
-
-function whiteMode() {
-    $(".window").css("background-color", "#ffffff");
-    $(".body-index").css("backgroundColor", "#ffffff");
-    $(".container-right").removeClass("dark-overlay");
-    $(".window").css("box-shadow", "0px 0px 51px -19px rgba(0, 0, 0, 0.75)");
-
-    $(".location, .temp").css("color", "#505050");
-    $(".country, .date, .forecast-day").css("color", "#a2b0c1");
-
-
-    // Change icon forcast
-    iconWhiteMode = [];
-    for (i = 0; i <= 4; i++) {
-        iconWhiteMode.push("images/iconFutur/" + iconCode[i] + ".svg");
-    }
-
-    for (i = 1; i <= 4; i++) {
-        $(".d" + i + "-img").attr("src", iconWhiteMode[i - 1]);
-    }
-    var mode = "white";
-    return mode;
-}
-
-$(".toggle-state").click(() => {
-    var backgroundColor = $(".window").css("background-color");
-    if (backgroundColor === "rgb(255, 255, 255)") {
-        darkMode();
-    } else {
-        whiteMode();
-    }
 });

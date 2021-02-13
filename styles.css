@@ -1,6 +1,3 @@
-/* font-family: "Epilogue", sans-serif;
-font-family: "Roboto", sans-serif; */
-
 :root {
   --gris-fonce: #505050;
   --gris-clair: #a2b0c1;
@@ -30,11 +27,11 @@ h3 {
   grid-template-columns: 2fr 1fr;
   width: 70vw;
   height: 80%;
-  min-height: 650px;
+  min-height: 40.6rem;
   box-shadow: 0px 0px 51px -19px rgba(0, 0, 0, 0.75);
-  letter-spacing: 2.5px;
+  letter-spacing: 0.15rem;
   background-color: #fff;
-  border-radius: 7px;
+  border-radius: 0.44rem;
 }
 
 .container-left {
@@ -43,13 +40,13 @@ h3 {
 }
 
 .container-right {
-  border-top-right-radius: 7px;
-  border-bottom-right-radius: 7px;
-  min-width: 275px;
+  border-top-right-radius: 0.44rem;
+  border-bottom-right-radius: 0.44rem;
+  min-width: 17.2rem;
 }
 
 .today-info {
-  padding: 25px;
+  padding: 1.56rem;
 }
 
 .today-meteo {
@@ -66,7 +63,7 @@ h3 {
 /*********************************************************************** Search box */
 .search-box {
   margin: 10px auto;
-  max-width: 300px;
+  max-width: 18.8rem;
 }
 
 /********************************************************************** BOX Today Info  */
@@ -79,24 +76,24 @@ h3 {
 
 .location {
   font-family: "Epilogue", sans-serif;
-  font-size: 38px;
+  font-size: 2.38rem;
   color: var(--gris-fonce);
 }
 
 .country,
 .date {
   font-family: "Roboto", sans-serif;
-  font-size: 18px;
+  font-size: 1.12rem;
   color: var(--gris-clair);
   font-weight: lighter;
 }
 
 .flag-img {
-  width: 40px;
+  width: 2.5rem;
   vertical-align: baseline;
   border: solid;
-  border-width: 1px;
-  margin-left: 10px;
+  border-width: 0.06rem;
+  margin-left: 0.6rem;
 }
 
 /****************************************************************** BOX Today Meteo */
@@ -108,32 +105,16 @@ h3 {
 
 .temp {
   color: var(--gris-fonce);
-  font-size: 115px;
+  font-size: 7.2rem;
   font-weight: lighter;
 }
 
 .icon-today-meteo {
-  max-width: 200px;
+  max-width: 12.5rem;
   animation: bouncing 2.5s 1s linear infinite;
 }
 
-@keyframes bouncing {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(3deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  75% {
-    transform: rotate(-3deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
+@keyframes bouncing{0%{transform:rotate(0)}25%{transform:rotate(3deg)}50%{transform:rotate(0)}75%{transform:rotate(-3deg)}100%{transform:rotate(0)}}
 
 /**************************************************************************** BOX forecast Meteo */
 .forecast-day {
@@ -145,12 +126,12 @@ h3 {
 }
 
 .forecast-day img {
-  margin: 25px;
-  width: 50px;
+  margin: 1.56rem;
+  width: 3.13rem;
 }
 
 .temp-forecast {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 /**************************************************************************** ERROR */
@@ -167,137 +148,36 @@ h3 {
 }
 
 .text-error {
-  font-size: 23px;
+  font-size: 1.4rem;
 }
 
 .btn-error {
-  margin: 20px;
+  margin: 1.25;
 }
 
 .sad-emoji {
-  width: 200px;
-  height: 200px;
-  margin-right: 100px;
+  width: 12.5rem;
+  height: 12.5rem;
+  margin-right: 6.25rem;
 }
 
 /********************************************************************************** Add / Remove Class **/
-.bg-01d-02d {
-  background: center / cover no-repeat url(images/background/foret-soleil.jpg);
-}
-
-.bg-01n-02n {
-  background: center / cover no-repeat url(images/background/ciel-etoiles.jpg);
-}
-
-.bg-03d-03n-04d-04n {
-  background: center / cover no-repeat url(images/background/clouds.jpg);
-}
-
-.bg-09d-10d {
-  background: center / cover no-repeat url(images/background/rain-day.jpg);
-}
-
-.bg-09n-10n {
-  background: center / cover no-repeat url(images/background/leaf-rain.jpg);
-}
-
-.bg-11d-11n {
-  background: center / cover no-repeat url(images/background/thunder.jpg);
-}
-
-.bg-13d-13n {
-  background: center / cover no-repeat url(images/background/neige-soleil.jpg);
-}
-
-.bg-50d-50n {
-  background: center / cover no-repeat url(images/background/forest-v2.jpg);
-}
+.bg-01d-02d{background:center/cover no-repeat url(images/background/foret-soleil.jpg)}.bg-01n-02n{background:center/cover no-repeat url(images/background/ciel-etoiles.jpg)}.bg-03d-03n-04d-04n{background:center/cover no-repeat url(images/background/clouds.jpg)}.bg-09d-10d{background:center/cover no-repeat url(images/background/rain-day.jpg)}.bg-09n-10n{background:center/cover no-repeat url(images/background/leaf-rain.jpg)}.bg-11d-11n{background:center/cover no-repeat url(images/background/thunder.jpg)}.bg-13d-13n{background:center/cover no-repeat url(images/background/neige-soleil.jpg)}.bg-50d-50n{background:center/cover no-repeat url(images/background/forest-v2.jpg)}
 
 .hidden {
   visibility: hidden;
 }
 
-/* .keyboard { cela ne change pas malgré le fait de passer de 500px à 700px...
-  height: calc(100% + 700px);
-}
- */
 /******************************************************************************* Loading */
 .loading {
   position: absolute;
-  width: 80px;
-  height: 80px;
+  width: 5rem;
+  height: 5rem;
 }
 
-.loading div {
-  animation: loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  transform-origin: 40px 40px;
-}
-.loading div:after {
-  content: " ";
-  display: block;
-  position: absolute;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #ffc107;
-  margin: -4px 0 0 -4px;
-}
-.loading div:nth-child(1) {
-  animation-delay: -0.036s;
-}
-.loading div:nth-child(1):after {
-  top: 63px;
-  left: 63px;
-}
-.loading div:nth-child(2) {
-  animation-delay: -0.072s;
-}
-.loading div:nth-child(2):after {
-  top: 68px;
-  left: 56px;
-}
-.loading div:nth-child(3) {
-  animation-delay: -0.108s;
-}
-.loading div:nth-child(3):after {
-  top: 71px;
-  left: 48px;
-}
-.loading div:nth-child(4) {
-  animation-delay: -0.144s;
-}
-.loading div:nth-child(4):after {
-  top: 72px;
-  left: 40px;
-}
-.loading div:nth-child(5) {
-  animation-delay: -0.18s;
-}
-.loading div:nth-child(5):after {
-  top: 71px;
-  left: 32px;
-}
-.loading div:nth-child(6) {
-  animation-delay: -0.216s;
-}
-.loading div:nth-child(6):after {
-  top: 68px;
-  left: 24px;
-}
-.loading div:nth-child(7) {
-  animation-delay: -0.252s;
-}
-.loading div:nth-child(7):after {
-  top: 63px;
-  left: 17px;
-}
-.loading div:nth-child(8) {
-  animation-delay: -0.288s;
-}
-.loading div:nth-child(8):after {
-  top: 56px;
-  left: 12px;
-}
+.loading div{animation:loading 1.2s cubic-bezier(.5,0,.5,1) infinite;transform-origin:1.5rem 1.5rem}.loading div:after{content:" ";display:block;position:absolute;width:.4rem;height:.4rem;border-radius:50%;background:#ffc107;margin:-4px 0 0 -4px}
+.loading div:nth-child(1){animation-delay:-36ms}.loading div:nth-child(1):after{top:63px;left:63px}.loading div:nth-child(2){animation-delay:-72ms}.loading div:nth-child(2):after{top:68px;left:56px}.loading div:nth-child(3){animation-delay:-108ms}.loading div:nth-child(3):after{top:71px;left:48px}.loading div:nth-child(4){animation-delay:-144ms}.loading div:nth-child(4):after{top:72px;left:40px}.loading div:nth-child(5){animation-delay:-.18s}.loading div:nth-child(5):after{top:71px;left:32px}.loading div:nth-child(6){animation-delay:-216ms}.loading div:nth-child(6):after{top:68px;left:24px}.loading div:nth-child(7){animation-delay:-252ms}.loading div:nth-child(7):after{top:63px;left:17px}.loading div:nth-child(8){animation-delay:-288ms}.loading div:nth-child(8):after{top:56px;left:12px}
+
 @keyframes loading {
   0% {
     transform: rotate(0deg);
@@ -308,20 +188,17 @@ h3 {
 }
 
 /******************************************************************* SWITCH TOGGLE */
-/* Dark Mode color:
-#121212; */
-
 .dark-overlay {
-  background-color: black;
-  opacity: 0.6;
+  opacity: 0.7;
+  background-color: #000;
 }
 
 /* The switch - the box around the slider */
 .switch {
   position: absolute;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 3.75rem;
+  height: 2.13rem;
 }
 
 /* Hide default HTML checkbox */
@@ -343,10 +220,10 @@ h3 {
 .toggle {
   isolation: isolate;
   position: relative;
-  height: 25px;
-  width: 50px;
-  border-radius: 15px;
-  margin: 20px;
+  height: 1.56rem;
+  width: 3.13rem;
+  border-radius: 0.9rem;
+  margin: 1.25rem;
   overflow: hidden;
   background-color: var(--warning);
   border: solid;
