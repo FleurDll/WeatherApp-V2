@@ -1,21 +1,19 @@
+const apiKey = "0d19090abb5a0f99a36820be42fa1bcc";
 // Today's date
 const optionsDate = {
     weekday: "long",
     day: "numeric",
     month: "long"
 };
-const dateComplete = new Date().toLocaleDateString("fr-FR", optionsDate);
-const dateCompleteCapitalized = dateComplete.toUpperCase();
-
-$(".date").text(dateCompleteCapitalized);
+const dateComplete = (new Date().toLocaleDateString("fr-FR", optionsDate)).toUpperCase();
+$(".date").text(dateComplete);
 
 // Weekday
 const optionsDay = {
     weekday: "long"
 };
 const currentDay = new Date().toLocaleDateString("fr-FR", optionsDay);
-const dayCapitalized = currentDay.toUpperCase();
-const daySliced = dayCapitalized.slice(0, 3);
+const daySliced = (currentDay.slice(0, 3)).toUpperCase();
 
 const weekday = ["DIM", "LUN", "MAR", "MER", "JEU", "VEN", "SAM"];
 
@@ -36,7 +34,7 @@ for (i = 1; i <= 4; i++) {
 };
 
 //////////////////////////////////////////////////////////////// Location current weather
-const successLocationWeather = function (data) {
+const successLocationCurrent = function (data) {
     const currentTemp = Math.floor(data.main.temp);
     const currentIcon = data.weather[0].icon;
     const currentSrcIcon = "images/iconSmile/" + currentIcon + ".svg";
@@ -73,15 +71,12 @@ const successLocationForecast = function (data) {
 
     for (i = 1; i <= 4; i++) {
         $(".d" + i + "-temp").text(LocationTempForecast[i - 1] + "°");
-    }
-
-    for (i = 1; i <= 4; i++) {
         $(".d" + i + "-img").attr("src", LocationIconForecast[i - 1]);
     }
-    return iconCode;
+    /*  return iconCode; */
 }
 
-///////////////////////////////////////////////////////////////////////////// API CALL LOCATION
+/////////////////////////////////////////// API CALL LOCATION
 const optionsLocation = {
     enableHightAccuracy: true,
     timeout: 5000,
@@ -90,22 +85,21 @@ const optionsLocation = {
 
 function success(pos) {
     $(".loading").removeClass("hidden");
-    const crd = pos.coords;
-    const latitude = crd.latitude;
-    const longitude = crd.longitude;
-    const apiKey = "0d19090abb5a0f99a36820be42fa1bcc";
+    const latitude = pos.coords.latitude;
+    const longitude = pos.coords.longitude;
 
-    const urlCurrentForecastLatLong = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&units=metric&lang=fr&appid=" + apiKey;
+    const urlForecastWeatherLatLong = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&units=metric&lang=fr&appid=" + apiKey;
     const urlCurrentWeatherLatLong = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&lang=fr&appid=" + apiKey + "&units=metric";
 
-    $.get(urlCurrentForecastLatLong, successLocationForecast).done(function () {
+    // Get Current Weather
+    $.get(urlCurrentWeatherLatLong, successLocationCurrent).done(function () {
     })
         .fail(function () {
             $('#myModal').modal('show');
         })
 
-    // Get TODAY info
-    $.get(urlCurrentWeatherLatLong, successLocationWeather).done(function () {
+    // Get Forecast Weather
+    $.get(urlForecastWeatherLatLong, successLocationForecast).done(function () {
     })
         .fail(function () {
             $('#myModal').modal('show');
@@ -114,19 +108,19 @@ function success(pos) {
 
 function error(err) {
     console.warn("ERREUR" + err.code + " " + err.message);
-    $(".modal-body").text("Seul la recherche par ville est disponible. (" + err.message + ").");
+    $(".modal-body").text("Seule la recherche par ville est disponible. (" + err.message + ").");
     $('#myModal').modal('show');
 }
 
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(success, error, optionsLocation);
 } else {
-    alert("La géolocalisation n'est pas supportée par ce browser.");
+    $(".modal-body").text("La géolocalisation n'est pas supportée par ce browser.");
+    $('#myModal').modal('show');
 }
 
 //////////////////////////////////////////////////////////////// Submit current weather
 const successSubmitCurrent = function (data) {
-
     const currentTemp = Math.floor(data.main.temp);
     const currentIcon = data.weather[0].icon;
     const currentSrcIcon = "images/iconSmile/" + currentIcon + ".svg";
@@ -167,39 +161,33 @@ const successSubmitForecast = function (data) {
 
     for (i = 1; i <= 4; i++) {
         $(".d" + i + "-temp").text(tempsDays[i - 1] + "°");
-    }
-
-    for (i = 1; i <= 4; i++) {
         $(".d" + i + "-img").attr("src", iconDays[i - 1]);
     }
-
-    return iconCode;
+    /*  return iconCode; */
 }
 ////////////////////////////////////////////////////////////////////////////////////// API CALL SUBMIT
 
 $("form").submit(e => {
-    const apiKey = "0d19090abb5a0f99a36820be42fa1bcc";
     const inputVal = $("#inputCity").val();
     const cityCapitalized = inputVal.charAt(0).toUpperCase() + inputVal.slice(1);
+    $(".location").text(cityCapitalized);
 
     setTimeout(() => { //clear input value
         $("#inputCity").val("");
     }, 10);
 
-    $(".location").text(cityCapitalized);
-
     const urlForecastCityName = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityCapitalized + "&lang=fr&appid=" + apiKey + "&units=metric";
-    const urlCurrentWeatherCityName = "https://api.openweathermap.org/data/2.5/weather?q=" + cityCapitalized + "&lang=fr&appid=" + apiKey + "&units=metric";
+    const urlCurrentCityName = "https://api.openweathermap.org/data/2.5/weather?q=" + cityCapitalized + "&lang=fr&appid=" + apiKey + "&units=metric";
 
-    // Get forecast info
-    $.get(urlForecastCityName, successSubmitForecast).done(function () {
+    // Get current info
+    $.get(urlCurrentCityName, successSubmitCurrent).done(function () {
     })
         .fail(function () {
             window.location.replace("https://fleurdll.github.io/Weather/error");
         })
 
-    // Get current info
-    $.get(urlCurrentWeatherCityName, successSubmitCurrent).done(function () {
+    // Get forecast info
+    $.get(urlForecastCityName, successSubmitForecast).done(function () {
     })
         .fail(function () {
             window.location.replace("https://fleurdll.github.io/Weather/error");
@@ -227,11 +215,9 @@ function darkMode() {
 
     // Change icon forcast
     iconDarkMode = [];
-    for (i = 0; i <= 4; i++) {
+    for (i = 0; i <= 3; i++) {
         iconDarkMode.push("images/darkmodeIcon/" + iconCode[i] + ".svg");
-    }
-    for (i = 1; i <= 4; i++) {
-        $(".d" + i + "-img").attr("src", iconDarkMode[i - 1]);
+        $(".d" + (i + 1) + "-img").attr("src", iconDarkMode[i]);
     }
 }
 
@@ -247,9 +233,7 @@ function whiteMode() {
     iconWhiteMode = [];
     for (i = 0; i <= 4; i++) {
         iconWhiteMode.push("images/iconFutur/" + iconCode[i] + ".svg");
-    }
-    for (i = 1; i <= 4; i++) {
-        $(".d" + i + "-img").attr("src", iconWhiteMode[i - 1]);
+        $(".d" + (i + 1) + "-img").attr("src", iconWhiteMode[i]);
     }
 }
 
@@ -303,7 +287,7 @@ document.addEventListener("dblclick", () => {
     toggleFullscreen();
 });
 
-$(document).ready(function () {
+/* $(document).ready(function () {
     var windowHeight = $(window).innerHeight();
     $('body').css({ 'height': windowHeight });
-});
+}); */
