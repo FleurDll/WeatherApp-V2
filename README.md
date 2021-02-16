@@ -36,7 +36,6 @@ Prevent image load time. They are already compressed, which improved the problem
 
 ## Preview
 - Laptop White
-![laptopBlackPreview](https://user-images.githubusercontent.com/75179031/108050973-9be06f80-704a-11eb-81ce-cfe57ba7b383.png)
 ![laptopWhitePreview](https://user-images.githubusercontent.com/75179031/108050975-9c790600-704a-11eb-949e-0ac22489d15c.png)
 ![smartphoneBlackPreview](https://user-images.githubusercontent.com/75179031/108050976-9d119c80-704a-11eb-8dbd-c8be4e6a104a.jpg)
 ![smartphoneWhitePreview](https://user-images.githubusercontent.com/75179031/108050978-9d119c80-704a-11eb-9e69-3e90dec1c737.jpg)
