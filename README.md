@@ -35,8 +35,9 @@ Therefore, I had these two bug to handle. To have a good view of the pattern, I 
 Prevent image load time. They are already compressed, which improved the problem a little.
 
 ## Preview
-- Laptop White
+- Laptop
 ![laptopWhitePreview](https://user-images.githubusercontent.com/75179031/108050975-9c790600-704a-11eb-949e-0ac22489d15c.png)
-![smartphoneBlackPreview](https://user-images.githubusercontent.com/75179031/108050976-9d119c80-704a-11eb-8dbd-c8be4e6a104a.jpg)
-![smartphoneWhitePreview](https://user-images.githubusercontent.com/75179031/108050978-9d119c80-704a-11eb-9e69-3e90dec1c737.jpg)
+- Tablet Darkmode
 ![tabletBlackPreview](https://user-images.githubusercontent.com/75179031/108050980-9daa3300-704a-11eb-9b1c-3feaad3f0277.png)
+- Smartphone 
+![smartphoneWhitePreview](https://user-images.githubusercontent.com/75179031/108050978-9d119c80-704a-11eb-9e69-3e90dec1c737.jpg)
