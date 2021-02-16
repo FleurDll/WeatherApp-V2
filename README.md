@@ -32,7 +32,7 @@ Well, I was retrieving the forecast info indicated at noon ("dt_txt": "2021-02-2
 Therefore, I had these two bug to handle. To have a good view of the pattern, I search all UTC, and write all sort of tables (Debug forecast weather.odt). Then I was able to predict wich first item on the list I had to aim for according to the UTC-0 and the location UTC. handleForecastInfo is the function taking care of that. line 215.
 
 ## Future improvement 
-Prevent image load time. They are already compressed, which improved the problem a little.
+Reduce image load time. They are already compressed, which improved the problem a little.
 
 ## Preview
 - Laptop
