@@ -1,5 +1,34 @@
 const apiKey = "0d19090abb5a0f99a36820be42fa1bcc";
 
+// Get user's language depending on location
+const userLang = navigator.language || navigator.userLanguage;
+
+optionsGeoDate = {
+    weekday: "long",
+    day: "numeric",
+    month: "long"
+}
+
+userLang === "fr-FR" ? handleUserLanguage("FR", "fr-FR") : handleUserLanguage("EN", "en-US");
+
+function handleUserLanguage(classLanguage, optionsLang) {
+    $(".body-index").addClass(classLanguage);
+    geolocationDate = new Date().toLocaleString(optionsLang, optionsGeoDate).toUpperCase();
+    $("#inputCity").attr("placeholder", "Chercher une ville");
+    $(".date").text(geolocationDate);
+}
+
+///////////////////////////////////// change language
+$(".toggle-state-language").click(() => {
+    if ($(".body-index").hasClass("FR")) {
+        $(".body-index").removeClass("FR").addClass("EN");
+        $("#inputCity").attr("placeholder", "Find a city");
+    } else {
+        $(".body-index").removeClass("EN").addClass("FR");
+        $("#inputCity").attr("placeholder", "Chercher une ville");
+    }
+});
+
 // Function to search time / date / next 4 days
 let d = new Date();
 let utc = d.getTime() + (d.getTimezoneOffset() * 60000);
@@ -9,6 +38,7 @@ function calcTime(offset) { // get time according to utc
     const optionsLocalTime = {
         hour: "numeric"
     };
+
     const time = nd.toLocaleTimeString("fr-FR", optionsLocalTime);
     const timeSliced = time.slice(0, 2);
     return timeSliced;
@@ -21,8 +51,16 @@ function calcDate(offset) { // get date according to utc
         day: "numeric",
         month: "long"
     };
-    const dateComplete = (nd.toLocaleString("fr-FR", optionsLocalDate)).toUpperCase();
-    $(".date").text(dateComplete);
+
+    const optionsCalcDateFR = "fr-FR";
+    const optionsCalcDateEN = "en-US";
+
+    ($(".body-index").hasClass("FR")) ? dateLanguage(optionsCalcDateFR) : dateLanguage(optionsCalcDateEN);
+
+    function dateLanguage(optionsCalcDate) {
+        let dateComplete = (nd.toLocaleString(optionsCalcDate, optionsLocalDate)).toUpperCase();
+        $(".date").text(dateComplete);
+    }
 }
 
 // Weekday
@@ -31,21 +69,34 @@ function getNext4Days(offset) {
     const optionsLocalDate = {
         weekday: "long"
     };
-    const currentDate = ((nd.toLocaleString("fr-FR", optionsLocalDate)).slice(0, 3)).toUpperCase();
-
-    const weekday = ["DIM", "LUN", "MAR", "MER", "JEU", "VEN", "SAM"];
-
-    const today = (day) => day == String(currentDate);
-    const indexCurrentDay = weekday.findIndex(today);
     const indexFutur = [];
 
-    // Get next days index
-    for (i = 1; i <= 4; i++) {
-        const newIndex = (indexCurrentDay + i) % 7;
-        indexFutur.push(newIndex);
-        $(".d" + i).text(weekday[indexFutur[i - 1]]);
+    const optionFR = "fr-FR";
+    const weekFR = ["DIM", "LUN", "MAR", "MER", "JEU", "VEN", "SAM"];
+    const optionEN = "en-US";
+    const weekEN = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
+    ($(".body-index").hasClass("FR")) ? handleLanguage(optionFR, weekFR) : handleLanguage(optionEN, weekEN);
+
+    function handleLanguage(options, week) {
+        const currentDate = ((nd.toLocaleString(options, optionsLocalDate)).slice(0, 3)).toUpperCase();
+        const weekday = week;
+        const today = (day) => day == String(currentDate);
+        const indexCurrentDay = weekday.findIndex(today);
+        // Get next days index
+        for (i = 1; i <= 4; i++) {
+            const newIndex = (indexCurrentDay + i) % 7;
+            indexFutur.push(newIndex);
+            $(".d" + i).text(weekday[indexFutur[i - 1]]);
+        }
     }
 }
+
+// error page language
+if ($(".body-index").hasClass("EN"))
+    $(".text-error").text("You may have entered the name of a non-existent city?");
+$(".btn-error").text("Try Again");
+
 //////////////////////////////////////////////////////////////// Location current weather
 const successLocationCurrent = function (data) {
     const currentUTC = (data.timezone) / 3600;
@@ -124,16 +175,30 @@ function success(pos) {
 
 function error(err) {
     console.warn("ERREUR" + err.code + " " + err.message);
-    $(".modal-body").text("Seule la recherche par ville est disponible. (" + err.message + ").");
+
     $('#myModal').modal('show');
     $(".loading").addClass("hidden");
+
+    if ($(".body-index").hasClass("FR")) {
+        $(".modal-title").text("Echec de la géolocalisation");
+        $(".modal-body").text("Seule la recherche par ville est disponible. (" + err.message + ").");
+    } else {
+        $(".modal-title").text("Geolocation failure");
+        $(".modal-body").text("Only city search is available. (" + err.message + ").");
+    }
 }
 
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(success, error, optionsLocation);
 } else {
-    $(".modal-body").text("La géolocalisation n'est pas supportée par ce browser.");
     $('#myModal').modal('show');
+    if ($(".body-index").hasClass("FR")) {
+        $(".modal-title").text("Echec de la géolocalisation");
+        $(".modal-body").text("La géolocalisation n'est pas supportée par ce browser.");
+    } else {
+        $(".modal-title").text("Geolocation failure");
+        $(".modal-body").text("Geolocation is not supported by this browser.");
+    }
 }
 
 //////////////////////////////////////////////////////////////// Submit current weather
@@ -192,8 +257,10 @@ $("form").submit(e => {
         $("#inputCity").val("");
     }, 10);
 
-    const urlForecastCityName = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityCapitalized + "&lang=fr&appid=" + apiKey + "&units=metric";
-    const urlCurrentCityName = "https://api.openweathermap.org/data/2.5/weather?q=" + cityCapitalized + "&lang=fr&appid=" + apiKey + "&units=metric";
+    ($(".body-index").hasClass("FR")) ? langUsed = "fr" : langUsed = "en";
+
+    const urlForecastCityName = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityCapitalized + "&lang=" + langUsed + "&appid=" + apiKey + "&units=metric";
+    const urlCurrentCityName = "https://api.openweathermap.org/data/2.5/weather?q=" + cityCapitalized + "&lang=" + langUsed + "&appid=" + apiKey + "&units=metric";
 
     // Get current info
     $.get(urlCurrentCityName, successSubmitCurrent).done(function () {
@@ -286,8 +353,9 @@ function handleForecastInfo(searchedUTC, usedData) {
     }
 }
 
+
 //////////////////////////////////// switch button Darkmode / Whitemode
-$(".toggle-state").click(() => {
+$(".toggle-state-darkmode").click(() => {
     const backgroundColor = $(".window").css("background-color");
     if (backgroundColor === "rgb(255, 255, 255)") {
         darkMode();
@@ -303,6 +371,7 @@ function darkMode() {
     $(".window").css("box-shadow", "0px 0px 51px -19px rgba(250, 250, 250, 0.25)");
     $(".location, .temp").css("color", "#A8A8A8");
     $(".country, .date, .forecast-day").css("color", "#606060");
+    $(".label-language, .label-darkmode").css("color", "#a2b0c1");
 
     // Change icon forcast
     iconDarkMode = [];
@@ -319,6 +388,7 @@ function whiteMode() {
     $(".window").css("box-shadow", "0px 0px 51px -19px rgba(0, 0, 0, 0.75)");
     $(".location, .temp").css("color", "#505050");
     $(".country, .date, .forecast-day").css("color", "#a2b0c1");
+    $(".label-language, .label-darkmode").css("color", "#505050");
 
     // Change icon forcast
     iconWhiteMode = [];

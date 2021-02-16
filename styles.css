@@ -2,6 +2,7 @@
   --gris-fonce: #505050;
   --gris-clair: #a2b0c1;
   --warning: #ffc107;
+  --danger: #dc3545;
 }
 
 .body-index {
@@ -164,7 +165,7 @@ h3 {
 }
 
 /********************************************************************************** Add / Remove Class **/
-.bg-01d-02d{background:center/cover no-repeat url(images/background/foret-soleil.jpg)}.bg-01n-02n{background:center/cover no-repeat url(images/background/night-time.jpg)}.bg-03d-03n-04d-04n{background:center/cover no-repeat url(images/background/clouds.jpg)}.bg-09d-10d{background:center/cover no-repeat url(images/background/rain-day.jpg)}.bg-09n-10n{background:center/cover no-repeat url(images/background/leaf-rain.jpg)}.bg-11d-11n{background:center/cover no-repeat url(images/background/thunder.jpg)}.bg-13d-13n{background:center/cover no-repeat url(images/background/neige-soleil.jpg)}.bg-50d-50n{background:center/cover no-repeat url(images/background/forest-v2.jpg)}
+.bg-01d-02d{background:center/cover no-repeat url(images/background/flower-field.jpg)}.bg-01n-02n{background:center/cover no-repeat url(images/background/night-time.jpg)}.bg-03d-03n-04d-04n{background:center/cover no-repeat url(images/background/clouds.jpg)}.bg-09d-10d{background:center/cover no-repeat url(images/background/rain-day.jpg)}.bg-09n-10n{background:center/cover no-repeat url(images/background/leaf-rain.jpg)}.bg-11d-11n{background:center/cover no-repeat url(images/background/thunder.jpg)}.bg-13d-13n{background:center/cover no-repeat url(images/background/neige-soleil.jpg)}.bg-50d-50n{background:center/cover no-repeat url(images/background/forest-v2.jpg)}
 
 .bg-image-smartphone {
   background: center/cover no-repeat url(images/background/forest.jpg);
@@ -198,28 +199,16 @@ h3 {
   background-color: #000;
 }
 
-.switch {
-  position: absolute;
-  display: inline-block;
-  width: 3.75rem;
-  height: 2.13rem;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.label {
+.label-darkmode {
   position: absolute;
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  color: black;
+  color: var(--gris-fonce);
+  font-family: "Epilogue", sans-serif;
 }
 
-.toggle {
+.toggle-darkmode {
   isolation: isolate;
   position: relative;
   height: 1.56rem;
@@ -232,11 +221,11 @@ h3 {
   border-color: var(--warning);
 }
 
-.toggle-state {
+.toggle-state-darkmode {
   display: none;
 }
 
-.indicator {
+.indicator-darkmode {
   height: 100%;
   width: 200%;
   background: #fff;
@@ -245,7 +234,49 @@ h3 {
   transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
 }
 
-.toggle-state:checked ~ .indicator {
+.toggle-state-darkmode:checked ~ .indicator-darkmode {
+  transform: translate3d(25%, 0, 0);
+}
+
+/******************************** LANGUAGE */
+
+.label-language {
+  position: absolute;
+  top: 40px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--gris-fonce);
+  font-family: "Epilogue", sans-serif;
+}
+
+.toggle-language {
+  isolation: isolate;
+  position: relative;
+  height: 1.56rem;
+  width: 3.13rem;
+  border-radius: 0.9rem;
+  margin: 1.25rem;
+  overflow: hidden;
+  background-color: var(--danger);
+  border: solid;
+  border-color: var(--danger);
+}
+
+.toggle-state-language {
+  display: none;
+}
+
+.indicator-language {
+  height: 100%;
+  width: 200%;
+  background: #fff;
+  border-radius: 15px;
+  transform: translate3d(-75%, 0, 0);
+  transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
+}
+
+.toggle-state-language:checked ~ .indicator-language {
   transform: translate3d(25%, 0, 0);
 }
 
