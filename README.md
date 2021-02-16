@@ -36,10 +36,8 @@ Prevent image load time. They are already compressed, which improved the problem
 
 ## Preview
 - Laptop White
-![laptopWhitePreview](https://user-images.githubusercontent.com/75179031/108050188-92a2d300-7049-11eb-9644-1b20d48195de.png)
-- Laptop Black 
-![laptopBlackPreview](https://user-images.githubusercontent.com/75179031/108050196-96365a00-7049-11eb-9904-5c66b3050c73.png)
-![tabletBlackPreview](https://user-images.githubusercontent.com/75179031/108050199-98001d80-7049-11eb-9fe9-304e1d0e426c.png)
-![smartphoneBlackPreview](https://user-images.githubusercontent.com/75179031/108050200-9898b400-7049-11eb-9354-c2dff5eb88bf.jpg)
-![smartphoneWhitePreview](https://user-images.githubusercontent.com/75179031/108050203-9898b400-7049-11eb-8737-9ce809221616.jpg)
-
+![laptopBlackPreview](https://user-images.githubusercontent.com/75179031/108050973-9be06f80-704a-11eb-81ce-cfe57ba7b383.png)
+![laptopWhitePreview](https://user-images.githubusercontent.com/75179031/108050975-9c790600-704a-11eb-949e-0ac22489d15c.png)
+![smartphoneBlackPreview](https://user-images.githubusercontent.com/75179031/108050976-9d119c80-704a-11eb-8dbd-c8be4e6a104a.jpg)
+![smartphoneWhitePreview](https://user-images.githubusercontent.com/75179031/108050978-9d119c80-704a-11eb-9e69-3e90dec1c737.jpg)
+![tabletBlackPreview](https://user-images.githubusercontent.com/75179031/108050980-9daa3300-704a-11eb-9b1c-3feaad3f0277.png)
