@@ -13,6 +13,7 @@ Now I wanted to upgrade the level using Frontend only, both in design and foncti
 - Dark mode 
 - Images that changes depending on the current weather
 - Full reponsiveness app (laptop, tablet and smartphone)
+- Full screen mode by double clicking
 
 ## Built With
 - HTML, CSS
