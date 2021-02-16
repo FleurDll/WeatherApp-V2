@@ -5,9 +5,9 @@ https://fleurdll.github.io/Weather/
 This web app gives current and forecast weather info.
 
 ## Motivation
-I have already created a first weather app (https://my-weather-app-practice.herokuapp.com/), it was built with nodeJS, express and EJS (Backend therefore). It only gives current weather for the searched cities. It was my first play around with API.
+I have already created a first weather app (https://my-weather-app-practice.herokuapp.com/), it was built with nodeJS, express and EJS (Backend). It only gives current weather for the searched cities. It was my first play around with API.
 
-Now I wanted to upgrade the level using Frontend only, both in design and fonctionalities :
+Now I wanted to upgrade the level, using Frontend only, both in design and fonctionalities :
 - User's location
 - Searched cities
 - Dark mode 
