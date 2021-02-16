@@ -33,3 +33,13 @@ Therefore, I had these two bug to handle. To have a good view of the pattern, I 
 
 ## Future improvement 
 Prevent image load time. They are already compressed, which improved the problem a little.
+
+## Preview
+- Laptop White
+![laptopWhitePreview](https://user-images.githubusercontent.com/75179031/108050188-92a2d300-7049-11eb-9644-1b20d48195de.png)
+- Laptop Black 
+![laptopBlackPreview](https://user-images.githubusercontent.com/75179031/108050196-96365a00-7049-11eb-9904-5c66b3050c73.png)
+![tabletBlackPreview](https://user-images.githubusercontent.com/75179031/108050199-98001d80-7049-11eb-9fe9-304e1d0e426c.png)
+![smartphoneBlackPreview](https://user-images.githubusercontent.com/75179031/108050200-9898b400-7049-11eb-9354-c2dff5eb88bf.jpg)
+![smartphoneWhitePreview](https://user-images.githubusercontent.com/75179031/108050203-9898b400-7049-11eb-8737-9ce809221616.jpg)
+
