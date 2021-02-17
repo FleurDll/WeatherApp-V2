@@ -49,7 +49,8 @@ Reduce image load time. They are already compressed, which improved the problem 
 ![tabletPreviewWhite](https://user-images.githubusercontent.com/75179031/108262292-08e82800-7165-11eb-851a-8058d784016b.png)
 
 - Smartphone <br>
-![smartphonePreviewDark](https://user-images.githubusercontent.com/75179031/108262290-084f9180-7165-11eb-8e27-89dcf43edd23.jpg)
+![smartphonePreviewDark](https://user-images.githubusercontent.com/75179031/108262965-e86c9d80-7165-11eb-90b7-88167383b811.jpg)
+
 
 
 
