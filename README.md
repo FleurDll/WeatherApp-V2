@@ -7,7 +7,7 @@ This web app gives current and forecast weather info.
 ## Motivation
 I have already created a first weather app (https://my-weather-app-practice.herokuapp.com/), it was built with nodeJS, express and EJS (Backend). It only gives current weather for the searched cities. It was my first play around with API.
 
-Now I wanted to upgrade the level, using Frontend only, both in design and fonctionalities :
+Now I wanted to upgrade the level, using frontend & backend, in design and fonctionalities :
 - FR & EN language
 - User's language detector
 - User's location
@@ -21,6 +21,8 @@ Now I wanted to upgrade the level, using Frontend only, both in design and fonct
 - HTML, CSS
 - JavaScript
 - [jQuery](https://jquery.com/)
+- [Nodejs](https://nodejs.org/en/)
+- [Express](https://expressjs.com/)
 - [Bootstrap](https://getbootstrap.com/)
 
 ## API
