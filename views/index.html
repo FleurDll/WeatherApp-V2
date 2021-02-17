@@ -7,7 +7,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
     />
-
     <title>Météo</title>
     <link rel="icon" href="images/rainbow.ico" />
 
@@ -71,29 +70,32 @@
 
     <div class="switch-buttons">
       <label class="label-darkmode">
-        <div class="toggle-darkmode">
+        <div class="toggle toggle-darkmode">
           <input
-            class="toggle-state-darkmode"
+            class="toggle-state toggle-state-darkmode"
             type="checkbox"
             name="check"
             value="check"
           />
-          <div class="indicator-darkmode"></div>
+          <div class="indicator indicator-darkmode"></div>
         </div>
-        <div class="label-text-darkmode">DARK MODE</div>
+        <div class="label-text-darkmode">mode</div>
       </label>
 
       <label class="label-language">
-        <div class="toggle-language">
+        <div class="toggle toggle-language">
           <input
-            class="toggle-state-language"
+            class="toggle-state toggle-state-language"
             type="checkbox"
             name="check"
             value="check"
           />
-          <div class="indicator-language"></div>
+          <div class="indicator indicator-language"></div>
         </div>
-        <div class="label-text-language">FR / EN</div>
+        <div class="label-text-language">
+          <span id="users-language">fr / </span
+          ><span id="other-language">en</span>
+        </div>
       </label>
     </div>
 
@@ -168,6 +170,7 @@
                   class="form-control"
                   placeholder="Chercher une ville"
                   autocomplete="off"
+                  autofocus
                 />
                 <button type="submit" class="btn btn-warning">
                   <i class="fas fa-search-location"></i>
@@ -179,6 +182,10 @@
         </section>
       </div>
     </div>
+    <!-- <div class="copyright">
+      <i class="far fa-copyright"><span id="copyright-year">2021,</span></i>
+      Fleur
+    </div> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/scripts/index.js"></script>

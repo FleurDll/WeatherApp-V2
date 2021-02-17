@@ -1,4 +1,4 @@
-const apiKey = ~;
+const apiKey = "0d19090abb5a0f99a36820be42fa1bcc";
 
 // Get user's language depending on location
 const userLang = navigator.language || navigator.userLanguage;
@@ -9,13 +9,31 @@ optionsGeoDate = {
     month: "long"
 }
 
-userLang === "fr-FR" ? handleUserLanguage("FR", "fr-FR") : handleUserLanguage("EN", "en-US");
+if (userLang === "fr-FR") {
+    dateToUserLanguage("FR", "fr-FR");
+    $("#users-language").text("fr / ");
+    $("#other-language").text("en");
+    $("#inputCity").attr("placeholder", "Chercher une ville");
+} else {
+    dateToUserLanguage("EN", "en-US");
+    $("#users-language").text("en / ");
+    $("#other-language").text("fr");
+    $("#inputCity").attr("placeholder", "Find a city");
+}
 
-function handleUserLanguage(classLanguage, optionsLang) {
+function dateToUserLanguage(classLanguage, optionsLang) {
     $(".body-index").addClass(classLanguage);
     geolocationDate = new Date().toLocaleString(optionsLang, optionsGeoDate).toUpperCase();
-    $("#inputCity").attr("placeholder", "Chercher une ville");
     $(".date").text(geolocationDate);
+}
+
+// error page language
+if (userLang === "fr-FR") {
+    $(".text-error").text("Tu as peut être entré le nom d'une ville non existante ?");
+    $(".btn-error").text("Réssayer");
+} else {
+    $(".text-error").text("You may have entered the name of a non-existent city?");
+    $(".btn-error").text("Try Again");
 }
 
 ///////////////////////////////////// change language
@@ -81,12 +99,6 @@ function getNext4Days(offset) {
     }
 }
 
-// error page language
-if ($(".body-index").hasClass("EN")) {
-    $(".text-error").text("You may have entered the name of a non-existent city?");
-    $(".btn-error").text("Try Again");
-}
-
 //////////////////////////////////////////////////////////////// Location current weather
 const successLocationCurrent = function (data) {
     const currentUTC = (data.timezone) / 3600;
@@ -140,7 +152,7 @@ const optionsLocation = {
     maximumAge: 0
 };
 
-function success(pos) {
+function successLocationUser(pos) {
     $(".loading").removeClass("hidden");
     const latitude = pos.coords.latitude;
     const longitude = pos.coords.longitude;
@@ -153,6 +165,7 @@ function success(pos) {
     })
         .fail(function () {
             $('#myModal').modal('show');
+            modalLanguage();
         })
 
     // Get Forecast Weather
@@ -160,36 +173,22 @@ function success(pos) {
     })
         .fail(function () {
             $('#myModal').modal('show');
+            modalLanguage();
         })
 }
 
-function error(err) {
+function errorLocationUser(err) {
     console.warn("ERREUR" + err.code + " " + err.message);
-
     $('#myModal').modal('show');
-    $(".loading").addClass("hidden");
+    modalLanguage(err);
 
-    if ($(".body-index").hasClass("FR")) {
-        $(".modal-title").text("Echec de la géolocalisation");
-        $(".modal-body").text("Seule la recherche par ville est disponible. (" + err.message + ").");
-    } else {
-        $(".modal-title").text("Geolocation failure");
-        $(".modal-body").text("Only city search is available. (" + err.message + ").");
-        $(".modal-close-button").text("Close");
-    }
 }
 
 if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(success, error, optionsLocation);
+    navigator.geolocation.getCurrentPosition(successLocationUser, errorLocationUser, optionsLocation);
 } else {
     $('#myModal').modal('show');
-    if ($(".body-index").hasClass("FR")) {
-        $(".modal-title").text("Echec de la géolocalisation");
-        $(".modal-body").text("La géolocalisation n'est pas supportée par ce browser.");
-    } else {
-        $(".modal-title").text("Geolocation failure");
-        $(".modal-body").text("Geolocation is not supported by this browser.");
-    }
+    modalLanguage();
 }
 
 //////////////////////////////////////////////////////////////// Submit current weather
@@ -342,8 +341,7 @@ function handleForecastInfo(searchedUTC, usedData) {
     }
 }
 
-
-//////////////////////////////////// switch button Darkmode / Whitemode
+//////////////////////////////////// switch button Dark mode / White mode
 $(".toggle-state-darkmode").click(() => {
     const backgroundColor = $(".window").css("background-color");
     if (backgroundColor === "rgb(255, 255, 255)") {
@@ -392,7 +390,7 @@ function getDynamicImage(todayIcon) {
     const backgroundColor = $(".window").css("background-color");
     const windowSize = $(window).width();
 
-    if (windowSize > 730) {
+    if (windowSize > 515) {
         if (backgroundColor === "rgb(18, 18, 18)") {
             handleImageAndOverlay("dark-overlay");
         } else if (backgroundColor === "rgb(255, 255, 255)") {
@@ -423,6 +421,27 @@ function getDynamicImage(todayIcon) {
         }
     }
 }
+
+// handle modal language
+function modalLanguage(errors) {
+    if (userLang === "fr-FR") {
+        $(".modal-title").text("Echec de la géolocalisation");
+        $(".modal-body").text("Seule la recherche par ville est disponible. (" + errors.message + ").");
+        $(".modal-close-button").click(function () {
+            $(".loading").addClass("hidden");
+            $("#inputCity").focus();
+        });
+    } else {
+        $(".modal-title").text("Geolocation failure");
+        $(".modal-body").text("Only city search is available. (" + errors.message + ").");
+        $(".modal-close-button").text("Close");
+        $(".modal-close-button").click(function () {
+            $(".loading").addClass("hidden");
+            $("#inputCity").focus();
+        });
+    }
+}
+
 //////////////////////////////////// Full-Screen mode
 function getFullscreenElement() {
     return document.fullscreenElement
