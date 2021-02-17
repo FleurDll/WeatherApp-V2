@@ -13,7 +13,7 @@ Now I wanted to upgrade the level, using Frontend only, both in design and fonct
 - User's location
 - Searched cities
 - Dark mode 
-- Images that changes depending on the current weather
+- Images that changes depending on the current weather (a way to travel a bit)
 - Full reponsiveness app (laptop, tablet and smartphone)
 - Full screen mode by double clicking
 
