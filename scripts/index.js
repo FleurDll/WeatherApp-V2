@@ -1,4 +1,4 @@
-const apiKey = ~;
+const apiKey = "0d19090abb5a0f99a36820be42fa1bcc";
 
 // Get user's language depending on location
 const userLang = navigator.language || navigator.userLanguage;
