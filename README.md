@@ -51,8 +51,8 @@ Reduce image load time. They are already compressed, which improved the problem 
 - Smartphone <br>
 ![smartphonePreviewDark](https://user-images.githubusercontent.com/75179031/108262965-e86c9d80-7165-11eb-90b7-88167383b811.jpg)
 
-
-
-
+## Attributions
+All 3 meteo icons packages come from [Flaticon](https://www.flaticon.com/) <br>
+Photos from [Freepik](https://www.freepik.com) and [Pexels](https://www.pexels.com/fr-fr/)
 
 
