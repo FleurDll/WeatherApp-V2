@@ -215,7 +215,7 @@ const successSubmitForecast = function (data) {
     const searchedCountry = data.city.country;
     const srcFlagCountry = "https://purecatamphetamine.github.io/country-flag-icons/3x2/" + searchedCountry + ".svg";
 
-    fetch('/', {
+    fetch('/', { // for database
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
