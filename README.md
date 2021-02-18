@@ -2,7 +2,7 @@
 *13/02/21*
 ## https://howstheweatherapp.herokuapp.com/
 
-This web app gives current and forecast weather info with several fonctionalities :
+This FULLSTACK web app gives current and forecast weather info with several fonctionalities :
 - FR & EN language
 - User's language detector
 - User's location
@@ -18,11 +18,13 @@ Now I wanted to upgrade the level, using both frontend & backend.
 
 ## Built With
 - HTML, CSS
+- [Bootstrap](https://getbootstrap.com/)
 - JavaScript
 - [jQuery](https://jquery.com/)
 - [Nodejs](https://nodejs.org/en/)
 - [Express](https://expressjs.com/)
-- [Bootstrap](https://getbootstrap.com/)
+- [Mongoose](https://mongoosejs.com/)
+- Deploy on [Heroku](https://www.heroku.com/)
 
 ## API
 From [OpenWeatherMap](https://openweathermap.org/) => 
