@@ -14,7 +14,7 @@ app.use("/scripts", express.static(__dirname + "/scripts"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb+srv://fleur_db:9JxlKd0pteQxDr37@cities.jtwqi.mongodb.net/weatherDB', {
+mongoose.connect('mongodb+srv://fleur_db:~password~@cities.jtwqi.mongodb.net/weatherDB', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
@@ -39,9 +39,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-
-    console.log(req.body);
-
+    
     const city = new City({
         cityName: req.body.city.cityName
     });
