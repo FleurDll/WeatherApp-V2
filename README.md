@@ -2,12 +2,7 @@
 *13/02/21*
 ## https://howstheweatherapp.herokuapp.com/
 
-This web app gives current and forecast weather info.
-
-## Motivation
-I have already created a first weather app (https://my-weather-app-practice.herokuapp.com/), it was built with nodeJS, express and EJS (Backend). It only gives current weather for the searched cities. It was my first play around with API.
-
-Now I wanted to upgrade the level, using frontend & backend, in design and fonctionalities :
+This web app gives current and forecast weather info with several fonctionalities :
 - FR & EN language
 - User's language detector
 - User's location
@@ -16,6 +11,10 @@ Now I wanted to upgrade the level, using frontend & backend, in design and fonct
 - Images that changes depending on the current weather (a way to travel a bit)
 - Full reponsiveness app (laptop, tablet and smartphone)
 - Full screen mode by double clicking
+
+## Motivation
+I have already created a first weather app (https://my-weather-app-practice.herokuapp.com/), it was built with nodeJS, express and EJS (Backend). It only gives current weather for the searched cities. It was my first play around with API. <br>
+Now I wanted to upgrade the level, using frontend & backend.
 
 ## Built With
 - HTML, CSS
@@ -36,8 +35,6 @@ For [Forecast](https://openweathermap.org/forecast5) weather (location || submit
 Well, I was retrieving the forecast info indicated at noon ("dt_txt": "2021-02-20 12:00:00" in the JSON file). I realized that this time indication was based on UTC-0, not the searched location. Futhermore, the first item from the JSON list of forecast info (every tree hours) changes depending on the current UTC-0 time. If it's 11h UTC, then the first item on the list would be at 12h, if it's 18h UTC-0, it would be 21h etc. 
 Therefore, I had these two bugs to handle. To have a good view of the pattern, I search all UTC, and write all sort of tables (debug forecast weather.png). Then I was able to predict wich first item on the list I had to aim for according to the UTC-0 and the location UTC. handleForecastInfo is the function taking care of that. [line 271](https://github.com/FleurDll/Weather/blob/fb051ae04990d6ab53e1b555b5f95b1f20a2cd95/scripts/index.js#L271) in index.js.
 
-
-
 ## Future improvement 
 Reduce image load time. They are already compressed, which improved the problem a little.
 
@@ -55,4 +52,4 @@ Reduce image load time. They are already compressed, which improved the problem 
 All 3 meteo icons packages come from [Flaticon](https://www.flaticon.com/). <br>
 Photos from [Freepik](https://www.freepik.com) and [Pexels](https://www.pexels.com/fr-fr/).
 
-
+## ©2021, Fleurdll
