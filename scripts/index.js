@@ -1,4 +1,5 @@
-const apiKey = ~;
+const apiKey = "0d19090abb5a0f99a36820be42fa1bcc";
+const windowSize = $(window).width();
 
 // Get user's language depending on location
 const userLang = navigator.language || navigator.userLanguage;
@@ -255,7 +256,7 @@ $("form").submit(e => {
     const inputVal = $("#inputCity").val();
     const cityCapitalized = inputVal.charAt(0).toUpperCase() + inputVal.slice(1);
 
-    
+
 
     setTimeout(() => { //clear input value
         $("#inputCity").val("");
@@ -374,7 +375,11 @@ function darkMode() {
     $(".location, .temp").css("color", "#A8A8A8");
     $(".country, .date, .forecast-day").css("color", "#606060");
     $(".label-language, .label-darkmode").css("color", "#a2b0c1");
-    $(".label-text-darkmode").text("light");
+    if (windowSize > 515) {
+        $(".label-text-darkmode").text("light");
+    } else {
+        $(".label-text-darkmode").text(" ");
+    }
 
     // Change icon forcast
     iconDarkMode = [];
@@ -392,7 +397,11 @@ function whiteMode() {
     $(".location, .temp").css("color", "#505050");
     $(".country, .date, .forecast-day").css("color", "#a2b0c1");
     $(".label-language, .label-darkmode").css("color", "#505050");
-    $(".label-text-darkmode").text("dark");
+    if (windowSize > 515) {
+        $(".label-text-darkmode").text("dark");
+    } else {
+        $(".label-text-darkmode").text(" "); // hide text switch mode button in smartphone mode
+    }
 
     // Change icon forcast
     iconWhiteMode = [];
@@ -405,7 +414,7 @@ function whiteMode() {
 /////////////////////////////////////// Dynamic backbround
 function getDynamicImage(todayIcon) {
     const backgroundColor = $(".window").css("background-color");
-    const windowSize = $(window).width();
+
 
     if (windowSize > 515) {
         if (backgroundColor === "rgb(18, 18, 18)") {

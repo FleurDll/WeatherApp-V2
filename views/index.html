@@ -116,84 +116,88 @@
       </div>
 
       <!-- <div class="main-window"> -->
-        <!------- for good copyright position -->
-        <div class="window">
-          <!---------------------------------------------------------------------- First container -->
-          <section class="container-left">
-            <!------------------------------------------------------------------ 1st box -->
-            <div class="today-info">
-              <div class="city-country">
-                <h1 class="location"></h1>
-                <h2 class="country"></h2>
-              </div>
-              <div class="date-flag">
-                <h2 class="date"></h2>
-                <img class="flag-img" src="" alt="" />
-              </div>
+      <!------- for good copyright position -->
+      <div class="window">
+        <!---------------------------------------------------------------------- First container -->
+        <section class="container-left">
+          <!------------------------------------------------------------------ 1st box -->
+          <div class="today-info">
+            <div class="city-country">
+              <h1 class="location"></h1>
+              <h2 class="country"></h2>
             </div>
-            <!------------------------------------------------------------------ 2nd box -->
-            <div class="today-meteo">
-              <div class="today-meteo-column">
-                <h3 class="temp"></h3>
-              </div>
+            <div class="date-flag">
+              <h2 class="date"></h2>
+              <img class="flag-img" src="" alt="" />
+            </div>
+          </div>
+          <!------------------------------------------------------------------ 2nd box -->
+          <div class="today-meteo">
+            <div class="today-meteo-column">
+              <h3 class="temp"></h3>
+            </div>
 
-              <div class="today-meteo-column">
-                <img class="icon-today-meteo hidden" src="" alt="image météo" />
-              </div>
+            <div class="today-meteo-column">
+              <img class="icon-today-meteo hidden" src="" alt="image météo" />
             </div>
-            <!------------------------------------------------------------------ 3rd box -->
+          </div>
+          <!------------------------------------------------------------------ 3rd box -->
 
-            <div class="forecast-meteo hidden">
-              <div class="forecast-day forecast-top">
-                <p class="d1"></p>
-                <img class="d1-img hidden" src="" alt="image météo" />
-                <h3 class="d1-temp temp-forecast"></h3>
-              </div>
-              <div class="forecast-day forecast-top">
-                <p class="d2"></p>
-                <img class="d2-img hidden" src="" alt="image météo" />
-                <h3 class="d2-temp temp-forecast"></h3>
-              </div>
-              <div class="forecast-day">
-                <p class="d3"></p>
-                <img class="d3-img hidden" src="" alt="image météo" />
-                <h3 class="d3-temp temp-forecast"></h3>
-              </div>
-              <div class="forecast-day">
-                <p class="d4"></p>
-                <img class="d4-img hidden" src="" alt="image météo" />
-                <h3 class="d4-temp temp-forecast"></h3>
-              </div>
+          <div class="forecast-meteo hidden">
+            <div class="forecast-day forecast-top">
+              <p class="d1"></p>
+              <img class="d1-img hidden" src="" alt="image météo" />
+              <h3 class="d1-temp temp-forecast"></h3>
             </div>
-          </section>
-          <!---------------------------------------------------------------------- Second container -->
-          <section class="container-right">
-            <div class="search-box">
-              <form action="/" method="post" enctype="application/x-www-form-urlencoded">
-                <div class="input-group mb-3">
-                  <input
-                    id="inputCity"
-                    name="cityName"
-                    type="text"
-                    class="form-control"
-                    placeholder="Chercher une ville"
-                    autocomplete="off"
-                    autofocus
-                  />
-                  <button type="submit" class="btn btn-warning">
-                    <i class="fas fa-search-location"></i>
-                  </button>
-                </div>
-              </form>
+            <div class="forecast-day forecast-top">
+              <p class="d2"></p>
+              <img class="d2-img hidden" src="" alt="image météo" />
+              <h3 class="d2-temp temp-forecast"></h3>
             </div>
-            <div class="img-nature bg-image-smartphone"></div>
-          </section>
-        </div>
-        <!-- <div class="copyright">
+            <div class="forecast-day">
+              <p class="d3"></p>
+              <img class="d3-img hidden" src="" alt="image météo" />
+              <h3 class="d3-temp temp-forecast"></h3>
+            </div>
+            <div class="forecast-day">
+              <p class="d4"></p>
+              <img class="d4-img hidden" src="" alt="image météo" />
+              <h3 class="d4-temp temp-forecast"></h3>
+            </div>
+          </div>
+        </section>
+        <!---------------------------------------------------------------------- Second container -->
+        <section class="container-right">
+          <div class="search-box">
+            <form
+              action="/"
+              method="post"
+              enctype="application/x-www-form-urlencoded"
+            >
+              <div class="input-group mb-3">
+                <input
+                  id="inputCity"
+                  name="cityName"
+                  type="text"
+                  class="form-control"
+                  placeholder="Chercher une ville"
+                  autocomplete="off"
+                  autofocus
+                />
+                <button type="submit" class="btn btn-warning">
+                  <i class="fas fa-search-location"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="img-nature bg-image-smartphone"></div>
+        </section>
+      </div>
+      <!-- <div class="copyright">
           <i class="far fa-copyright"><span id="copyright-year">2021,</span></i>
           Fleurdll
         </div> -->
-     <!--  </div> -->
+      <!--  </div> -->
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
