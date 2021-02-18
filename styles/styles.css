@@ -61,6 +61,20 @@ h3 {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+.main-window {
+  display: flex;
+  flex-direction: column;
+}
+
+.copyright {
+  text-align: center;
+  color: #696969;
+  margin-top: 40px;
+  font-size: 15px;
+  font-family: "Epilogue", sans-serif;
+  letter-spacing: 0.3px;
+}
+
 /******************************************** search box */
 .search-box {
   margin: 10px auto;
