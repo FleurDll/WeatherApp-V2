@@ -2,8 +2,8 @@
 *13/02/21*
 ## https://howstheweatherapp.herokuapp.com/
 
-This fullstack web app gives current and forecast weather info with several fonctionalities :
-- FR & EN language
+This fullstack web app gives current and forecast weather info with several functionalities :
+- Fr & en language
 - User's language detector
 - User's location
 - Searched cities
