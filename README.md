@@ -2,7 +2,7 @@
 *13/02/21*
 ## https://howstheweatherapp.herokuapp.com/
 
-This FULLSTACK web app gives current and forecast weather info with several fonctionalities :
+This fullstack web app gives current and forecast weather info with several fonctionalities :
 - FR & EN language
 - User's language detector
 - User's location
@@ -11,6 +11,7 @@ This FULLSTACK web app gives current and forecast weather info with several fonc
 - Images that changes depending on the current weather (a way to travel a bit)
 - Full reponsiveness app (laptop, tablet and smartphone)
 - Full screen mode by double clicking
+- Database storing searched cities
 
 ## Motivation
 I have already created a first weather app (https://my-weather-app-practice.herokuapp.com/), it was built with nodeJS, express and EJS (Backend). It only gives current weather for the searched cities. It was my first play around with API. <br>
