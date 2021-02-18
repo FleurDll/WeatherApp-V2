@@ -43,13 +43,13 @@ Reduce image load time. They are already compressed, which improved the problem 
 
 ## Preview
 - Desktop <br>
-![desktopPreviewDark](https://user-images.githubusercontent.com/75179031/108262289-07b6fb00-7165-11eb-9146-eea84f86acad.png)
+![desktopDarkPreview](https://user-images.githubusercontent.com/75179031/108415991-7613c000-722e-11eb-9b0e-b92526d21556.png)
 
 - Tablet Darkmode <br>
-![tabletPreviewWhite](https://user-images.githubusercontent.com/75179031/108262292-08e82800-7165-11eb-851a-8058d784016b.png)
+![tabletLightPreview](https://user-images.githubusercontent.com/75179031/108415990-757b2980-722e-11eb-9ba5-fed3bca17785.png)
 
 - Smartphone <br>
-![smartphonePreviewDark](https://user-images.githubusercontent.com/75179031/108262965-e86c9d80-7165-11eb-90b7-88167383b811.jpg)
+![smartphoneDarkPreview](https://user-images.githubusercontent.com/75179031/108415993-7613c000-722e-11eb-8a86-6019b77310f9.png)
 
 ## Attributions
 All 3 meteo icons packages come from [Flaticon](https://www.flaticon.com/). <br>
