@@ -210,9 +210,22 @@ const successSubmitCurrent = function (data) {
 
 /////////////////////////////////////////////////////////////// Submit forcast weather
 const successSubmitForecast = function (data) {
+
     const searchedCity = (data.city.name).toUpperCase();
     const searchedCountry = data.city.country;
     const srcFlagCountry = "https://purecatamphetamine.github.io/country-flag-icons/3x2/" + searchedCountry + ".svg";
+
+    fetch('/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            city: {
+                cityName: data.city.name
+            }
+        })
+    });
 
     $(".loading").addClass("hidden");
     $("img").removeClass("hidden");
@@ -241,6 +254,8 @@ const successSubmitForecast = function (data) {
 $("form").submit(e => {
     const inputVal = $("#inputCity").val();
     const cityCapitalized = inputVal.charAt(0).toUpperCase() + inputVal.slice(1);
+
+    
 
     setTimeout(() => { //clear input value
         $("#inputCity").val("");

@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require('body-parser')
 const mongoose = require("mongoose");
-const persPort = 3000;
+const persPort = 8080;
 
 const app = express();
 
@@ -10,11 +10,11 @@ app.use(express.static(path.join(__dirname)));
 app.use("/styles", express.static(__dirname + "/styles"));
 app.use("/images", express.static(__dirname + "/images"));
 app.use("/scripts", express.static(__dirname + "/scripts"));
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
 
-mongoose.connect('mongodb://localhost/weatherDB', {
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+mongoose.connect('mongodb+srv://fleur_db:9JxlKd0pteQxDr37@cities.jtwqi.mongodb.net/weatherDB', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
@@ -27,21 +27,23 @@ db.once("open", () => {
 });
 
 const citySchema = new mongoose.Schema({
-    city: String
-});
+    cityName: String
+}, {
+    timestamps: { createdAt: true, updatedAt: false }
+  });
 
 const City = mongoose.model("City", citySchema);
-
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname + "/views/index.html"));
 });
 
 app.post("/", (req, res) => {
-    console.log("POST ACTION");
+
+    console.log(req.body);
 
     const city = new City({
-        city: req.body.cityName
+        cityName: req.body.city.cityName
     });
 
     city.save((err) => {
@@ -49,7 +51,7 @@ app.post("/", (req, res) => {
             console.log("city saved");
             res.redirect("/");
         } else {
-            console.console.log((err));
+            console.log((err));
         }
     });
 });

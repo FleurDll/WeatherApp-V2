@@ -61,7 +61,7 @@ h3 {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.main-window {
+/* .main-window {
   display: flex;
   flex-direction: column;
 }
@@ -73,7 +73,7 @@ h3 {
   font-size: 15px;
   font-family: "Epilogue", sans-serif;
   letter-spacing: 0.3px;
-}
+} */
 
 /******************************************** search box */
 .search-box {
