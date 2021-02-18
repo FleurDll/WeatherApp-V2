@@ -1,4 +1,4 @@
-const apiKey = "0d19090abb5a0f99a36820be42fa1bcc";
+const apiKey = ~;
 const windowSize = $(window).width();
 
 // Get user's language depending on location
