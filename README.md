@@ -3,13 +3,13 @@
 ## https://howstheweatherapp.herokuapp.com/
 
 This fullstack web app gives current and forecast weather info with several functionalities :
-- Fr & en language
+- French & english language
 - User's language detector
 - User's location
 - Searched cities
 - Dark mode 
 - Images that changes depending on the current weather (a way to travel a bit)
-- Full reponsiveness app (laptop, tablet and smartphone)
+- Full reponsiveness app (desktop, tablet and smartphone)
 - Full screen mode by double clicking
 - Database storing searched cities
 
