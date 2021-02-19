@@ -1,4 +1,4 @@
-const apiKey = ~;
+const apiKey = "0d19090abb5a0f99a36820be42fa1bcc";
 const windowSize = $(window).width();
 
 // Get user's language depending on location
@@ -245,6 +245,10 @@ const successSubmitForecast = function (data) {
 
     handleForecastInfo(submitUTC, submitData);
 
+    console.log(tempsDays);
+    console.log(iconCode);
+    console.log(submitUTC);
+
     for (i = 1; i <= 4; i++) {
         $(".d" + i + "-temp").text(tempsDays[i - 1] + "°");
         $(".d" + i + "-img").attr("src", iconDays[i - 1]);
@@ -255,8 +259,6 @@ const successSubmitForecast = function (data) {
 $("form").submit(e => {
     const inputVal = $("#inputCity").val();
     const cityCapitalized = inputVal.charAt(0).toUpperCase() + inputVal.slice(1);
-
-
 
     setTimeout(() => { //clear input value
         $("#inputCity").val("");
@@ -271,14 +273,14 @@ $("form").submit(e => {
     $.get(urlCurrentCityName, successSubmitCurrent).done(function () {
     })
         .fail(function () {
-            window.location.replace("https://howstheweatherapp.herokuapp.com/error");
+            window.location.replace("error");
         })
 
     // Get forecast info
     $.get(urlForecastCityName, successSubmitForecast).done(function () {
     })
         .fail(function () {
-            window.location.replace("https://howstheweatherapp.herokuapp.com/error");
+            window.location.replace("error");
         })
     e.preventDefault();
 });
@@ -318,25 +320,25 @@ function handleForecastInfo(searchedUTC, usedData) {
     }
 
     function handleSearchedUTC(listNumer) {
-        if (searchedUTC === -14) {
+        if (searchedUTC >= -14 && searchedUTC < -13) {
             getRightIcon(listNumer);
-        } else if (searchedUTC === -13 || searchedUTC === -12) {
+        } else if (searchedUTC >= -13 && searchedUTC < -11) {
             getRightIcon(listNumer - 1);
-        } else if (searchedUTC === -11 || searchedUTC === -10 || searchedUTC === -9) {
+        } else if (searchedUTC >= -11 && searchedUTC < -8) {
             getRightIcon(listNumer - 2);
-        } else if (searchedUTC === -8 || searchedUTC === -7 || searchedUTC === -6) {
+        } else if (searchedUTC >= -8 && searchedUTC < -5) {
             getRightIcon(listNumer - 3);
-        } else if (searchedUTC === -5 || searchedUTC === -4 || searchedUTC === -3) {
+        } else if (searchedUTC >= -5 && searchedUTC < -2) {
             getRightIcon(listNumer - 4);
-        } else if (searchedUTC === -2 || searchedUTC === -1 || searchedUTC === 0 || searchedUTC === 1) {
+        } else if (searchedUTC >= -2 && searchedUTC <= 1) {
             getRightIcon(listNumer - 5);
-        } else if (searchedUTC === 2 || searchedUTC === 3) {
+        } else if (searchedUTC >= 2 && searchedUTC < 4) {
             getRightIcon(listNumer - 6);
-        } else if (searchedUTC === 4 || searchedUTC === 5 || searchedUTC === 6) {
+        } else if (searchedUTC >= 4 && searchedUTC < 7) {
             getRightIcon(listNumer - 7);
-        } else if (searchedUTC === 7 || searchedUTC === 8 || searchedUTC === 9) {
+        } else if (searchedUTC >= 7 && searchedUTC < 10) {
             getRightIcon(listNumer - 8);
-        } else if (searchedUTC === 10 || searchedUTC === 11 || searchedUTC === 12 || searchedUTC === 13 || searchedUTC === 14) {
+        } else if (searchedUTC >= 10 && searchedUTC <= 14) {
             getRightIcon(listNumer - 9);
         }
 
