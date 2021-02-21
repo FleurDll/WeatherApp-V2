@@ -42,13 +42,13 @@ Therefore, I had these two bugs to handle. To have a good view of the pattern, I
 Reduce image load time. They are already compressed, which improved the problem a little.
 
 ## Preview
-- Desktop <br>
+- Desktop Dark mode <br>
 ![desktopDarkPreview](https://user-images.githubusercontent.com/75179031/108415991-7613c000-722e-11eb-9b0e-b92526d21556.png)
 
-- Tablet Darkmode <br>
+- Tablet  <br>
 ![tabletLightPreview](https://user-images.githubusercontent.com/75179031/108415990-757b2980-722e-11eb-9ba5-fed3bca17785.png)
 
-- Smartphone <br>
+- Smartphone Dark mode<br>
 ![smartphoneDarkPreview](https://user-images.githubusercontent.com/75179031/108415993-7613c000-722e-11eb-8a86-6019b77310f9.png)
 
 ## Attributions
